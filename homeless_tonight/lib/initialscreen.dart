@@ -15,7 +15,7 @@ class initialscreen extends StatelessWidget {
               Text("Toad Suck", style: TextStyle(color: Colors.black)),
               Text(
                 "COALITION",
-                style: TextStyle(color: Colors.green[200]),
+                style: TextStyle(color: Colors.teal[200]),
               ),
               Text(
                 'FAULKNER COUNTY, ARKANSAS',
@@ -27,20 +27,44 @@ class initialscreen extends StatelessWidget {
         body: Center(
           child: Column(
             children: [
-              Text("Homeless Tonight"),
+              SizedBox(
+                height: 60,
+              ),
+              Text("Homeless Tonight",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
+              SizedBox(
+                height: 150,
+              ),
               TextButton(
                   onPressed: () {},
+                  style: TextButton.styleFrom(
+                      backgroundColor: Colors.teal[200],
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10))),
                   child: Text(
                     "Service Provider",
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   )),
+              SizedBox(
+                height: 60,
+              ),
               TextButton(
                   onPressed: () {},
+                  style: TextButton.styleFrom(
+                      backgroundColor: Colors.teal[200],
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10))),
                   child: Text("Need Service",
                       textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontSize: 50, fontWeight: FontWeight.bold)))
+                      style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white)))
             ],
           ),
         ));
