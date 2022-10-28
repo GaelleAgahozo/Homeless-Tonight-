@@ -6,29 +6,31 @@ class ResourcesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Homeless Services Home'),
+        leading: BackButton(
+          color: Colors.black,
+        ),
+      ),
       body: Column(children: <Widget>[
-        const Text('Homeless Tonight'),
-        const Text('Resources'),
+        // const Text('Homeless Tonight'),
+        // const Text('Resources'),
         ElevatedButton(
-          onPressed: (() {}), // needs navigation to ShelterScreen
-          child: const Text(
-            'Shelter',
-            style: TextStyle(fontSize: 24, height: 1.1))),
+            onPressed: (() {}), // needs navigation to ShelterScreen
+            child: const Text('Shelter',
+                style: TextStyle(fontSize: 24, height: 1.1))),
         ElevatedButton(
-          onPressed: (() {}), // needs navigation to FoodScreen
-          child: const Text(
-            'Food',
-            style: TextStyle(fontSize: 24, height: 1.1))),
+            onPressed: (() {}), // needs navigation to FoodScreen
+            child: const Text('Food',
+                style: TextStyle(fontSize: 24, height: 1.1))),
         ElevatedButton(
-          onPressed: (() {}), // needs navigation to EmergencySuppliesScreen
-          child: const Text(
-            'Emergency Supplies',
-            style: TextStyle(fontSize: 24, height: 1.1))),
+            onPressed: (() {}), // needs navigation to EmergencySuppliesScreen
+            child: const Text('Emergency Supplies',
+                style: TextStyle(fontSize: 24, height: 1.1))),
         ElevatedButton(
-          onPressed: (() {}), // needs navigation to LaundryScreen
-          child: const Text(
-            'Laundry',
-            style: TextStyle(fontSize: 24, height: 1.1))),
+            onPressed: (() {}), // needs navigation to LaundryScreen
+            child: const Text('Laundry',
+                style: TextStyle(fontSize: 24, height: 1.1))),
       ]),
     );
   }
