@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:homeless_tonight/resources_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const <Widget>[
+            children: <Widget>[
               ElevatedButton(
                   onPressed: null,
                   child: Text(
@@ -54,7 +55,12 @@ class _MyHomePageState extends State<MyHomePage> {
               Padding(
                   padding: EdgeInsets.only(top: 50),
                   child: ElevatedButton(
-                      onPressed: null,
+                      onPressed: () => {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: ((context) => ResourcesScreen())))
+                          },
                       child: Text("\n Resources \n",
                           style: TextStyle(fontSize: 24, height: 1.1))))
             ],

@@ -63,12 +63,6 @@ class initialscreen extends StatelessWidget {
                                       title: 'Homeless Services Home ',
                                     ))))
                       },
-                  // () => {
-                  //           Navigator.push(
-                  //               context,
-                  //               MaterialPageRoute(
-                  //                   builder: ((context) => ResourcesScreen())))
-                  //         },
                   style: TextButton.styleFrom(
                       backgroundColor: Colors.teal[200],
                       shape: RoundedRectangleBorder(
