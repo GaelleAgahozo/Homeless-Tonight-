@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:homeless_tonight/homeless.dart';
 
 class initialscreen extends StatelessWidget {
   const initialscreen({super.key});
@@ -54,7 +55,20 @@ class initialscreen extends StatelessWidget {
                 height: 60,
               ),
               TextButton(
-                  onPressed: () {},
+                  onPressed: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => const MyHomePage(
+                                      title: 'Homeless Services Home ',
+                                    ))))
+                      },
+                  // () => {
+                  //           Navigator.push(
+                  //               context,
+                  //               MaterialPageRoute(
+                  //                   builder: ((context) => ResourcesScreen())))
+                  //         },
                   style: TextButton.styleFrom(
                       backgroundColor: Colors.teal[200],
                       shape: RoundedRectangleBorder(
