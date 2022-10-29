@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:homeless_tonight/resources_screen.dart';
+import 'package:homeless_tonight/domesticviolence.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,7 +49,13 @@ class _MyHomePageState extends State<MyHomePage> {
               Padding(
                   padding: EdgeInsets.only(top: 50),
                   child: ElevatedButton(
-                      onPressed: null,
+                      onPressed: () => {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: ((context) =>
+                                        DomesticViolenceScreen())))
+                          },
                       child: Text(
                           "\n I am a victim of Domestic \n Violence/Sex Trafficking \n",
                           style: TextStyle(fontSize: 24, height: 1.1)))),
