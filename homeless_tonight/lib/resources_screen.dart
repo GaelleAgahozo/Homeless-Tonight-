@@ -16,25 +16,51 @@ class ResourcesScreen extends StatelessWidget {
         // const Text('Homeless Tonight'),
         // const Text('Resources'),
         ElevatedButton(
-            onPressed: (() {}), // needs navigation to ShelterScreen
+            onPressed: (() {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: ((context) =>
+                        ShelterScreen())));
+                        }),
             child: const Text('Shelter',
                 style: TextStyle(fontSize: 24, height: 1.1))),
         ElevatedButton(
-            onPressed: (() {}), // needs navigation to FoodScreen
+            onPressed: (() {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: ((context) =>
+                        FoodScreen())));
+                        }),
             child: const Text('Food',
                 style: TextStyle(fontSize: 24, height: 1.1))),
         ElevatedButton(
-            onPressed: (() {}), // needs navigation to EmergencySuppliesScreen
+            onPressed: (() {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: ((context) =>
+                        EmergencySuppliesScreen())));
+                        }),
             child: const Text('Emergency Supplies',
                 style: TextStyle(fontSize: 24, height: 1.1))),
         ElevatedButton(
-            onPressed: (() {}), // needs navigation to LaundryScreen
+            onPressed: (() {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: ((context) =>
+                        LaundryScreen())));
+                        }),
             child: const Text('Laundry',
                 style: TextStyle(fontSize: 24, height: 1.1))),
       ]),
     );
   }
 }
+
+// Lists of resources should be stored in firebase so that they can be updated without needing an app update. 
 
 class ShelterScreen extends StatelessWidget {
   const ShelterScreen({super.key});
