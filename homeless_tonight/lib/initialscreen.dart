@@ -1,41 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:homeless_tonight/homeless.dart';
+import 'package:homeless_tonight/pageTemplate.dart';
 
 class initialscreen extends StatelessWidget {
   const initialscreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(60.0),
-          child: AppBar(
-            backgroundColor: Colors.teal[200],
-            centerTitle: true,
-            title: Column(children: [
-              Text("Toad Suck", style: TextStyle(color: Colors.black)),
-              Text(
-                "COALITION",
-                style: TextStyle(color: Colors.white),
-              ),
-              Text(
-                'FAULKNER COUNTY, ARKANSAS',
-                style: TextStyle(fontSize: 8, color: Colors.red[900]),
-              )
-            ]),
-          ),
-        ),
-        body: Center(
+    return HomelessTonightPage(
+        child: Center(
           child: Column(
             children: [
-              SizedBox(
-                height: 60,
-              ),
-              Text("Homeless Tonight",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
-              SizedBox(
-                height: 150,
-              ),
+              Spacer(),
               TextButton(
                   onPressed: () {},
                   style: TextButton.styleFrom(
@@ -52,7 +28,7 @@ class initialscreen extends StatelessWidget {
                     ),
                   )),
               SizedBox(
-                height: 60,
+                height: 100,
               ),
               TextButton(
                   onPressed: () => {
@@ -72,7 +48,8 @@ class initialscreen extends StatelessWidget {
                       style: TextStyle(
                           fontSize: 40,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white)))
+                          color: Colors.white))),
+              Spacer()
             ],
           ),
         ));

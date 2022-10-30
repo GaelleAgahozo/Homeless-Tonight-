@@ -3,25 +3,25 @@ import 'package:homeless_tonight/resources_screen.dart';
 import 'package:homeless_tonight/domesticviolence.dart';
 import 'package:homeless_tonight/need_shelter.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+// void main() {
+//   runApp(const MyApp());
+// }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // primarySwatch: Colors.teal[200],
-        backgroundColor: Colors.teal[200],
-      ),
-      home: const MyHomePage(title: 'Homeless Services Home Page'),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Flutter Demo',
+//       theme: ThemeData(
+//         // primarySwatch: Colors.teal[200],
+//         backgroundColor: Colors.teal[200],
+//       ),
+//       home: const MyHomePage(title: 'Homeless Services Home Page'),
+//     );
+//   }
+// }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
