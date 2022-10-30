@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:homeless_tonight/pageTemplate.dart';
 
 class ResourcesScreen extends StatelessWidget {
   const ResourcesScreen({super.key});
@@ -67,8 +68,8 @@ class ShelterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView(
+    return HomelessTonightPage(
+      child: ListView(
         children: [
           Card(
             child: Column(
