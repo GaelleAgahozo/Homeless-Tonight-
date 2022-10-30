@@ -10,13 +10,13 @@ class initialscreen extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(60.0),
           child: AppBar(
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.teal[200],
             centerTitle: true,
             title: Column(children: [
               Text("Toad Suck", style: TextStyle(color: Colors.black)),
               Text(
                 "COALITION",
-                style: TextStyle(color: Colors.teal[200]),
+                style: TextStyle(color: Colors.white),
               ),
               Text(
                 'FAULKNER COUNTY, ARKANSAS',
