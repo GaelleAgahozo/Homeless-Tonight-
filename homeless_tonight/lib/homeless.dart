@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:homeless_tonight/resources_screen.dart';
 import 'package:homeless_tonight/domesticviolence.dart';
+import 'package:homeless_tonight/need_shelter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        // primarySwatch: Colors.teal[200],
+        backgroundColor: Colors.teal[200],
       ),
       home: const MyHomePage(title: 'Homeless Services Home Page'),
     );
@@ -42,7 +44,12 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               ElevatedButton(
-                  onPressed: null,
+                  onPressed: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => Shelter())))
+                      },
                   child: Text(
                       "\n I am homeless in Conway \n and I do not have a place \n to sleep tonight \n",
                       style: TextStyle(fontSize: 24, height: 1.1))),
