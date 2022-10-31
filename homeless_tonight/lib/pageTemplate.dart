@@ -30,8 +30,10 @@ class HomelessTonightPage extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: [
           const SizedBox(height: 60,),
-          Text("Homeless Tonight",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: Theme.of(context).colorScheme.secondary)),
+          Align(
+            child: Text("Homeless Tonight",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: Theme.of(context).colorScheme.secondary)),
+          ),
           Expanded(
             child: child,
           )
