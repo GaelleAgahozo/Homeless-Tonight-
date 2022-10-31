@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:homeless_tonight/pageTemplate.dart';
 
 class ResourcesScreen extends StatelessWidget {
-  const ResourcesScreen({super.key});
+  const ResourcesScreen({super.key, required String title});
 
   @override
   Widget build(BuildContext context) {
@@ -18,42 +18,32 @@ class ResourcesScreen extends StatelessWidget {
         // const Text('Resources'),
         ElevatedButton(
             onPressed: (() {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: ((context) =>
-                        ShelterScreen())));
-                        }),
+              Navigator.push(context,
+                  MaterialPageRoute(builder: ((context) => ShelterScreen())));
+            }),
             child: const Text('Shelter',
                 style: TextStyle(fontSize: 24, height: 1.1))),
         ElevatedButton(
             onPressed: (() {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: ((context) =>
-                        FoodScreen())));
-                        }),
+              Navigator.push(context,
+                  MaterialPageRoute(builder: ((context) => FoodScreen())));
+            }),
             child: const Text('Food',
                 style: TextStyle(fontSize: 24, height: 1.1))),
         ElevatedButton(
             onPressed: (() {
               Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: ((context) =>
-                        EmergencySuppliesScreen())));
-                        }),
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => EmergencySuppliesScreen())));
+            }),
             child: const Text('Emergency Supplies',
                 style: TextStyle(fontSize: 24, height: 1.1))),
         ElevatedButton(
             onPressed: (() {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: ((context) =>
-                        LaundryScreen())));
-                        }),
+              Navigator.push(context,
+                  MaterialPageRoute(builder: ((context) => LaundryScreen())));
+            }),
             child: const Text('Laundry',
                 style: TextStyle(fontSize: 24, height: 1.1))),
       ]),
@@ -61,7 +51,7 @@ class ResourcesScreen extends StatelessWidget {
   }
 }
 
-// Lists of resources should be stored in firebase so that they can be updated without needing an app update. 
+// Lists of resources should be stored in firebase so that they can be updated without needing an app update.
 
 class ShelterScreen extends StatelessWidget {
   const ShelterScreen({super.key});
