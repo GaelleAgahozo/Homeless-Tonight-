@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:homeless_tonight/pageTemplate.dart';
 
 class ResourcesScreen extends StatelessWidget {
-  const ResourcesScreen({super.key});
+  const ResourcesScreen({super.key, required String title});
 
   @override
   Widget build(BuildContext context) {

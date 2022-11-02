@@ -9,49 +9,49 @@ class initialscreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return HomelessTonightPage(
         child: Center(
-          child: Column(
-            children: [
-              Spacer(),
-              TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(
-                      backgroundColor: Colors.teal[200],
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10))),
-                  child: Text(
-                    "Service Provider",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
+      child: Column(
+        children: [
+          Spacer(),
+          TextButton(
+              onPressed: () {},
+              style: TextButton.styleFrom(
+                  backgroundColor: Colors.teal[200],
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10))),
+              child: Text(
+                "Service Provider",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              )),
+          SizedBox(
+            height: 100,
+          ),
+          TextButton(
+              onPressed: () => {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => const MyHomePage(
+                                  title: 'Homeless Services Home ',
+                                ))))
+                  },
+              style: TextButton.styleFrom(
+                  backgroundColor: Colors.teal[200],
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10))),
+              child: Text("Need Service",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  )),
-              SizedBox(
-                height: 100,
-              ),
-              TextButton(
-                  onPressed: () => {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) => const MyHomePage(
-                                      title: 'Homeless Services Home ',
-                                    ))))
-                      },
-                  style: TextButton.styleFrom(
-                      backgroundColor: Colors.teal[200],
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10))),
-                  child: Text("Need Service",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white))),
-              Spacer()
-            ],
-          ),
-        ));
+                      color: Colors.white))),
+          Spacer()
+        ],
+      ),
+    ));
   }
 }

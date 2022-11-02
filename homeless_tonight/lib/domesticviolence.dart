@@ -83,14 +83,14 @@ class DomesticViolenceScreen extends StatelessWidget {
           ),
         ),
         Padding(
-            padding: EdgeInsets.only(top: 10),
+            padding: EdgeInsets.only(top: 3),
             child: SizedBox(
               width: 150,
               height: 60,
               child: ElevatedButton(
                   onPressed: null,
                   child: Text("Send",
-                      style: TextStyle(fontSize: 25, height: 1.1))),
+                      style: TextStyle(fontSize: 20, height: 0.5))),
             )),
       ]),
     );
