@@ -20,7 +20,37 @@ class ResourcesScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: ((context) =>
-                        const ResourceListScreen(title: 'Shelter', resourceList: [],))));
+                        const ResourceListScreen(title: 'Shelter', resourceList: [
+                          Resource(
+                            name: 'Shelter Service 1',
+                            description: 'A service providing shelter',
+                            hours: 'Mon-Fri: 9a - 6p',
+                            phoneNumber: '1234567890',
+                            address: '1234 Main st, Conway, AR',
+                            website: 'www.shelterservice.com'
+                          ),
+                          Resource(
+                            name: 'Shelter Service 2',
+                            description: 'A service providing shelter',
+                            hours: 'Mon-Fri: 9a - 6p',
+                            phoneNumber: '1234567890',
+                            address: '1234 Main st, Conway, AR'
+                          ),
+                          Resource(
+                            name: 'Shelter Service 3',
+                            description: 'A service providing shelter',
+                            hours: 'Mon-Fri: 9a - 6p',
+                            phoneNumber: '1234567890',
+                            address: '1234 Main st, Conway, AR'
+                          ),
+                          Resource(
+                            name: 'Shelter Service 4',
+                            description: 'A service providing shelter',
+                            hours: 'Mon-Fri: 9a - 6p',
+                            phoneNumber: '1234567890',
+                            address: '1234 Main st, Conway, AR'
+                          )
+                        ],))));
                         }),
             child: SizedBox(
               width: MediaQuery.of(context).size.width - 100,
@@ -37,7 +67,37 @@ class ResourcesScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: ((context) =>
-                        const ResourceListScreen(title: 'Food', resourceList: [],))));
+                        const ResourceListScreen(title: 'Food', resourceList: [
+                          Resource(
+                            name: 'Food Service 1',
+                            description: 'A service providing breakfast',
+                            hours: 'Mon-Fri: 7a - 12p',
+                            phoneNumber: '1234567890',
+                            address: '1234 Main st, Conway, AR',
+                            website: 'www.foodservice.com'
+                          ),
+                          Resource(
+                            name: 'Food Service 2',
+                            description: 'A service providing breakfast and lunch',
+                            hours: 'Mon-Fri: 9a - 6p',
+                            phoneNumber: '1234567890',
+                            address: '1234 Main st, Conway, AR'
+                          ),
+                          Resource(
+                            name: 'Food Service 3',
+                            description: 'A service providing shelter breakfast, lunch and dinner',
+                            hours: 'Mon-Fri: 9a - 9p',
+                            phoneNumber: '1234567890',
+                            address: '1234 Main st, Conway, AR'
+                          ),
+                          Resource(
+                            name: 'Food Service 4',
+                            description: 'A service providing food',
+                            hours: 'Mon-Fri: 9a - 6p',
+                            phoneNumber: '1234567890',
+                            address: '1234 Main st, Conway, AR'
+                          )
+                        ],))));
                         }),
             child: SizedBox(
               width: MediaQuery.of(context).size.width - 100,
@@ -53,7 +113,37 @@ class ResourcesScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: ((context) =>
-                        const ResourceListScreen(title: 'Emergency Supplies', resourceList: [],))));
+                        const ResourceListScreen(title: 'Emergency Supplies', resourceList: [
+                          Resource(
+                            name: 'Emergency Supplies Service 1',
+                            description: 'A service providing emergency supplies',
+                            hours: 'Mon-Fri: 9a - 6p',
+                            phoneNumber: '1234567890',
+                            address: '1234 Main st, Conway, AR',
+                            website: 'www.laundryservice.com'
+                          ),
+                          Resource(
+                            name: 'Emergency Supplies Service 2',
+                            description: 'A service providing emergency supplies',
+                            hours: 'Mon-Fri: 9a - 6p',
+                            phoneNumber: '1234567890',
+                            address: '1234 Main st, Conway, AR'
+                          ),
+                          Resource(
+                            name: 'Emergency Supplies Service 3',
+                            description: 'A service providing emergency supplies',
+                            hours: 'Mon-Fri: 9a - 6p',
+                            phoneNumber: '1234567890',
+                            address: '1234 Main st, Conway, AR'
+                          ),
+                          Resource(
+                            name: 'Emergency Supplies Service 4',
+                            description: 'A service providing emergency supplies',
+                            hours: 'Mon-Fri: 9a - 6p',
+                            phoneNumber: '1234567890',
+                            address: '1234 Main st, Conway, AR'
+                          )
+                        ],))));
                         }),
             child: SizedBox(
               width: MediaQuery.of(context).size.width - 100,
@@ -69,7 +159,37 @@ class ResourcesScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: ((context) =>
-                        const ResourceListScreen(title: 'Laundry', resourceList: [],))));
+                        const ResourceListScreen(title: 'Laundry', resourceList: [
+                          Resource(
+                            name: 'Laundry Service 1',
+                            description: 'A service providing laundry',
+                            hours: 'Mon-Fri: 9a - 6p',
+                            phoneNumber: '1234567890',
+                            address: '1234 Main st, Conway, AR',
+                            website: 'www.shelterservice.com'
+                          ),
+                          Resource(
+                            name: 'Laundry Service 2',
+                            description: 'A service providing laundry',
+                            hours: 'Mon-Fri: 9a - 6p',
+                            phoneNumber: '1234567890',
+                            address: '1234 Main st, Conway, AR'
+                          ),
+                          Resource(
+                            name: 'Laundry Service 3',
+                            description: 'A service providing laundry',
+                            hours: 'Mon-Fri: 9a - 6p',
+                            phoneNumber: '1234567890',
+                            address: '1234 Main st, Conway, AR'
+                          ),
+                          Resource(
+                            name: 'Laundry Service 4',
+                            description: 'A service providing laundry',
+                            hours: 'Mon-Fri: 9a - 6p',
+                            phoneNumber: '1234567890',
+                            address: '1234 Main st, Conway, AR'
+                          )
+                        ],))));
                         }),
             child: SizedBox(
               width: MediaQuery.of(context).size.width - 100,
@@ -104,26 +224,62 @@ class ResourceListScreen extends StatelessWidget {
     return HomelessTonightPage(
       child: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: ListView(
-          children: resourceList.map((resource) {
-            return InkWell(
-              onTap:() {
-                _displayResourceInfoDialog(context, resource);
-              },
-              child: Card(
-                color: Theme.of(context).colorScheme.surface,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: <Widget>[
-                      Text(resource.name),
-                      Text(resource.description)
-                    ],
-                  ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Card(
+              color: Theme.of(context).colorScheme.surface,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: <Widget>[
+                    Text(title,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSurface,
+                        fontSize: 36
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            );
-          },).toList()
+            ),
+            const SizedBox(height: 20),
+            Expanded(
+              child: ListView(
+              children: resourceList.map((resource) {
+                return InkWell(
+                  onTap:() {
+                    _displayResourceInfoDialog(context, resource);
+                  },
+                  child: Card(
+                    color: Theme.of(context).colorScheme.surface,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: <Widget>[
+                          Text(resource.name,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.onSurface,
+                              fontSize: 24
+                            ),
+                          ),
+                          Text(resource.description,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.onSurface,
+                              fontSize: 18
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },).toList()
+              ),
+            )],
         ),
       ),
     );
@@ -135,45 +291,42 @@ Future<void> _displayResourceInfoDialog(BuildContext context, Resource resource)
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text(resource.name),
+          title: Text(resource.name,
+            textAlign: TextAlign.center,
+          ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
                 resource.description
               ),
-              Visibility(
-                visible: resource.hours != null,
-                child: Text(
-                  resource.hours!
-                )
+              const SizedBox(height: 10,),
+              if (resource.hours != null) Text(
+                resource.hours!
               ),
-              Visibility(
-                visible: resource.phoneNumber != null,
-                child: Text(
-                  resource.phoneNumber!
-                )
+              const SizedBox(height: 10,),
+              if (resource.phoneNumber != null) Text(
+                resource.phoneNumber!
               ),
-              Visibility(
-                visible: resource.address != null,
-                child: Text(
-                  resource.address!
-                )
+              const SizedBox(height: 10,),
+              if (resource.address != null) Text(
+                resource.address!
               ),
-              Visibility(
-                visible: resource.website != null,
-                child: Text(
-                  resource.website!
-                )
+              const SizedBox(height: 10,),
+              if (resource.website != null) Text(
+                resource.website!
               ),
             ]
           ),
           actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Done'),
+            Align(
+              alignment: Alignment.center,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('Done'),
+              ),
             )
           ],
         );
