@@ -73,9 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: ((context) => ResourcesScreen(
-                                          title: 'Resources',
-                                        ))))
+                                    builder: ((context) => ResourcesScreen())))
                           },
                       child: Text("\n Resources \n",
                           style: TextStyle(fontSize: 24, height: 1.1))))
