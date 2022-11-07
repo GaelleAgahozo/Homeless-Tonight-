@@ -1,35 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:homeless_tonight/pageTemplate.dart';
 
 class DomesticViolenceScreen extends StatelessWidget {
   const DomesticViolenceScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(60.0),
-        child: AppBar(
-          backgroundColor: Colors.teal[200],
-          centerTitle: true,
-          title: Column(children: [
-            const Text("Toad Suck", style: TextStyle(color: Colors.black)),
-            const Text(
-              "COALITION",
-              style: TextStyle(color: Colors.white),
-            ),
-            Text(
-              'FAULKNER COUNTY, ARKANSAS',
-              style: TextStyle(fontSize: 8, color: Colors.red[900]),
-            )
-          ]),
-        ),
-      ),
-      body: Column(children: <Widget>[
+    return HomelessTonightPage(
+      child: Column(children: <Widget>[
         const Align(
           alignment: Alignment.center,
         ),
         Padding(
-            padding: EdgeInsets.only(top: 50, bottom: 10),
+            padding: const EdgeInsets.only(top: 10, bottom: 10),
             child: Card(
                 color: Theme.of(context).colorScheme.surface,
                 child: const Text(
