@@ -18,7 +18,7 @@ class initialscreen extends StatelessWidget {
                   backgroundColor: Colors.teal[200],
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10))),
-              child: Text(
+              child: const Text(
                 "Service Provider",
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -27,7 +27,7 @@ class initialscreen extends StatelessWidget {
                   color: Colors.white,
                 ),
               )),
-          SizedBox(
+          const SizedBox(
             height: 100,
           ),
           TextButton(
@@ -43,13 +43,13 @@ class initialscreen extends StatelessWidget {
                   backgroundColor: Colors.teal[200],
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10))),
-              child: Text("Need Service",
+              child: const Text("Need Service",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
                       color: Colors.white))),
-          Spacer()
+          const Spacer()
         ],
       ),
     ));

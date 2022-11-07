@@ -7,13 +7,13 @@ class DomesticViolenceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60.0),
+        preferredSize: const Size.fromHeight(60.0),
         child: AppBar(
           backgroundColor: Colors.teal[200],
           centerTitle: true,
           title: Column(children: [
-            Text("Toad Suck", style: TextStyle(color: Colors.black)),
-            Text(
+            const Text("Toad Suck", style: TextStyle(color: Colors.black)),
+            const Text(
               "COALITION",
               style: TextStyle(color: Colors.white),
             ),

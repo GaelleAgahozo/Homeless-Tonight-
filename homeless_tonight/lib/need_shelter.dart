@@ -12,14 +12,14 @@ class Shelter extends StatelessWidget {
     return HomelessTonightPage(
         child: Center(
             child: Column(children: [
-      Spacer(),
+      const Spacer(),
       TextButton(
           onPressed: () {},
           style: TextButton.styleFrom(
               backgroundColor: Colors.teal[200],
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18))),
-          child: Text(
+          child: const Text(
             "I am homeless in \n Conway and don't \n have a place to \n sleep tonight ",
             textAlign: TextAlign.center,
             style: TextStyle(
@@ -28,22 +28,22 @@ class Shelter extends StatelessWidget {
               color: Colors.white,
             ),
           )),
-      Padding(
+      const Padding(
           padding: EdgeInsets.only(top: 30, bottom: 100),
           child: Text("Connect with a local \n homeless service \n provider",
               style: TextStyle(fontSize: 22))),
-      Padding(
+      const Padding(
           padding: EdgeInsets.only(top: 5, bottom: 50),
           child: Text(" 1. Enter Your Name",
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold))),
-      Padding(
+      const Padding(
           padding: EdgeInsets.only(top: 4, bottom: 50),
           child: Text(
             " 2. Enter Current Location",
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           )),
-      Padding(
+      const Padding(
           padding: EdgeInsets.only(top: 1, bottom: 60),
           child: Text(
             " 3. What Type of Shelter Do You Need?",
@@ -56,7 +56,7 @@ class Shelter extends StatelessWidget {
               backgroundColor: Colors.teal[200],
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10))),
-          child: Text(
+          child: const Text(
             "Send ",
             textAlign: TextAlign.center,
             style: TextStyle(
