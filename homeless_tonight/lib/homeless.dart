@@ -4,26 +4,6 @@ import 'package:homeless_tonight/resources_screen.dart';
 import 'package:homeless_tonight/domesticviolence.dart';
 import 'package:homeless_tonight/need_shelter.dart';
 
-// void main() {
-//   runApp(const MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Flutter Demo',
-//       theme: ThemeData(
-//         // primarySwatch: Colors.teal[200],
-//         backgroundColor: Colors.teal[200],
-//       ),
-//       home: const MyHomePage(title: 'Homeless Services Home Page'),
-//     );
-//   }
-// }
-
 class HomelessMainScreen extends StatefulWidget {
   const HomelessMainScreen({super.key});
 
@@ -41,23 +21,25 @@ class _HomelessMainScreenState extends State<HomelessMainScreen> {
         children: <Widget>[
           ElevatedButton(
               onPressed: () => {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: ((context) => Shelter())))
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => const Shelter())))
                   },
-              child: Text(
+              child: const Text(
                   "\n I am homeless in Conway \n and I do not have a place \n to sleep tonight \n",
                   style: TextStyle(fontSize: 24, height: 1.1))),
           Padding(
-              padding: EdgeInsets.only(top: 50),
+              padding: const EdgeInsets.only(top: 50),
               child: ElevatedButton(
                   onPressed: () => {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: ((context) =>
-                                    DomesticViolenceScreen())))
+                                    const DomesticViolenceScreen())))
                       },
-                  child: Text(
+                  child: const Text(
                       "\n I am a victim of Domestic \n Violence/Sex Trafficking \n",
                       style: TextStyle(fontSize: 24, height: 1.1)))),
           Padding(
@@ -67,14 +49,16 @@ class _HomelessMainScreenState extends State<HomelessMainScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: ((context) => ResourcesScreen())))
+                                builder: ((context) =>
+                                    const ResourcesScreen())))
                       },
-                  child: Text("\n Resources \n",
+                  child: const Text("\n Resources \n",
                       style: TextStyle(fontSize: 24, height: 1.1)))),
           Padding(
-              padding: EdgeInsets.only(top: 10),
+              padding: const EdgeInsets.only(top: 10),
               child: TextButton(
-                  onPressed: () {}, child: Text("I am a Service Provider")))
+                  onPressed: () {},
+                  child: const Text("I am a Service Provider")))
         ],
       ),
     ));
