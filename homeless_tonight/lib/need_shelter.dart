@@ -44,7 +44,7 @@ class Shelter extends StatelessWidget {
             textAlign: TextAlign.center,
           )),
       const Padding(
-          padding: EdgeInsets.only(top: 1, bottom: 60),
+          padding: EdgeInsets.only(top: 20, bottom: 60),
           child: Text(
             " 3. What Type of Shelter Do You Need?",
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -60,7 +60,7 @@ class Shelter extends StatelessWidget {
             "Send ",
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 25,
+              fontSize: 26,
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),
