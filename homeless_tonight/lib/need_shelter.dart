@@ -29,27 +29,61 @@ class Shelter extends StatelessWidget {
             ),
           )),
       const Padding(
-          padding: EdgeInsets.only(top: 30, bottom: 100),
+          padding: EdgeInsets.only(top: 30, bottom: 60),
           child: Text("Connect with a local \n homeless service \n provider",
               style: TextStyle(fontSize: 22))),
-      const Padding(
-          padding: EdgeInsets.only(top: 5, bottom: 50),
-          child: Text(" 1. Enter Your Name",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold))),
-      const Padding(
-          padding: EdgeInsets.only(top: 4, bottom: 50),
-          child: Text(
-            " 2. Enter Current Location",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-          )),
-      const Padding(
-          padding: EdgeInsets.only(top: 20, bottom: 60),
-          child: Text(
-            " 3. What Type of Shelter Do You Need?",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-          )),
+      const SizedBox(
+        width: 300,
+        height: 80,
+        child: TextField(
+          decoration: InputDecoration(hintText: "1. Enter Your Name"),
+          style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold), //Connect User Inputs to Controller
+          controller: null,
+        ),
+      ),
+      // const Padding(
+      //     padding: EdgeInsets.only(top: 5, bottom: 50),
+      //     child: Text(" 1. Enter Your Name",
+      //         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold))),
+      // const Padding(
+      //     padding: EdgeInsets.only(top: 4, bottom: 50),
+      //     child: Text(
+      //       " 2. Enter Current Location",
+      //       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+      //       textAlign: TextAlign.center,
+      //     )),
+      const SizedBox(
+        width: 300,
+        height: 80,
+        child: TextField(
+          decoration: InputDecoration(hintText: "2. Enter Current Location"),
+          style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold), //Connect User Inputs to Controller
+          controller: null,
+        ),
+      ),
+      // const Padding(
+      //     padding: EdgeInsets.only(top: 20, bottom: 60),
+      //     child: Text(
+      //       " 3. What Type of Shelter Do You Need?",
+      //       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+      //       textAlign: TextAlign.center,
+      //     )),
+      const SizedBox(
+        width: 300,
+        height: 80,
+        child: TextField(
+          decoration: InputDecoration(
+              hintText: " 3. What Type of Shelter Do You Need?"),
+          style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold), //Connect User Inputs to Controller
+          controller: null,
+        ),
+      ),
       TextButton(
           onPressed: () {},
           style: TextButton.styleFrom(
