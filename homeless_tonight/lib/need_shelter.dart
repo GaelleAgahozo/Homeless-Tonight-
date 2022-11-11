@@ -29,14 +29,15 @@ class Shelter extends StatelessWidget {
             ),
           )),
       const Padding(
-          padding: EdgeInsets.only(top: 30, bottom: 60),
+          padding: EdgeInsets.only(top: 30, bottom: 70),
           child: Text("Connect with a local \n homeless service \n provider",
-              style: TextStyle(fontSize: 22))),
+              textAlign: TextAlign.center, style: TextStyle(fontSize: 22))),
       const SizedBox(
         width: 300,
         height: 80,
         child: TextField(
           decoration: InputDecoration(hintText: "1. Enter Your Name"),
+          textAlign: TextAlign.center,
           style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold), //Connect User Inputs to Controller
@@ -59,6 +60,7 @@ class Shelter extends StatelessWidget {
         height: 80,
         child: TextField(
           decoration: InputDecoration(hintText: "2. Enter Current Location"),
+          textAlign: TextAlign.center,
           style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold), //Connect User Inputs to Controller
@@ -78,6 +80,7 @@ class Shelter extends StatelessWidget {
         child: TextField(
           decoration: InputDecoration(
               hintText: " 3. What Type of Shelter Do You Need?"),
+          textAlign: TextAlign.center,
           style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold), //Connect User Inputs to Controller
@@ -89,12 +92,12 @@ class Shelter extends StatelessWidget {
           style: TextButton.styleFrom(
               backgroundColor: Colors.teal[200],
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10))),
+                  borderRadius: BorderRadius.circular(8))),
           child: const Text(
             "Send ",
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 26,
+              fontSize: 30,
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),
