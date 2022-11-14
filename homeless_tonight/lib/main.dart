@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:homeless_tonight/homeless.dart';
+import 'package:sensors_plus/sensors_plus.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() {
   runApp(const MyApp());
