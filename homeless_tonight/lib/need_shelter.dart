@@ -20,7 +20,7 @@ class Shelter extends StatelessWidget {
               color: Theme.of(context).colorScheme.surface,
               child: const Text(
                 "\nI am a homeless\n in Conway and do not have \n a place to sleep tonight\n",
-                style: TextStyle(fontSize: 22),
+                style: TextStyle(fontSize: 22, color: Colors.white),
                 textAlign: TextAlign.center,
               ))),
       Padding(
@@ -34,7 +34,7 @@ class Shelter extends StatelessWidget {
                 },
                 child: const Text(
                   "Connect with a local \n homeless service \n provider",
-                  style: TextStyle(fontSize: 20, color: Colors.black),
+                  style: TextStyle(fontSize: 20, color: Colors.white),
                   textAlign: TextAlign.center,
                 )),
           )),
