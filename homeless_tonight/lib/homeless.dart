@@ -57,7 +57,7 @@ class _HomelessMainScreenState extends State<HomelessMainScreen> {
           Padding(
               padding: const EdgeInsets.only(top: 10),
               child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {Navigator.of(context).pushNamed('/sign_in');},
                   child: const Text("I am a Service Provider")))
         ],
       ),

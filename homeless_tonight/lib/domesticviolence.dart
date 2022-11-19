@@ -17,14 +17,18 @@ class DomesticViolenceScreen extends StatelessWidget {
                 color: Theme.of(context).colorScheme.surface,
                 child: const Text(
                     "\n I am a victim of Domestic \n Violence/Sex Trafficking \n",
-                    style: TextStyle(fontSize: 24, height: 1.1)))),
+                    style: TextStyle(
+                        fontSize: 24, height: 1.1, color: Colors.white)))),
         const Padding(
             padding: EdgeInsets.only(top: 20, bottom: 5),
             child: Text("24 Hour Crisis Line", style: TextStyle(fontSize: 22))),
-        const Padding(
-            padding: EdgeInsets.only(top: 5, bottom: 30),
-            child: Text("1-866-358-2265",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
+        Padding(
+            padding: const EdgeInsets.only(top: 5, bottom: 30),
+            child: TextButton(
+                onPressed: () {},
+                child: const Text("1-866-358-2265",
+                    style:
+                        TextStyle(fontSize: 24, fontWeight: FontWeight.bold)))),
         const Padding(
             padding: EdgeInsets.only(top: 10, bottom: 10),
             child: Text(
@@ -42,7 +46,10 @@ class DomesticViolenceScreen extends StatelessWidget {
                   child: const Text(
                     "Call 911",
                     style: TextStyle(
-                        fontSize: 25, height: 1.8, fontWeight: FontWeight.bold),
+                        fontSize: 25,
+                        height: 1.8,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
                     textAlign: TextAlign.center,
                   )),
             )),
@@ -64,7 +71,7 @@ class DomesticViolenceScreen extends StatelessWidget {
                   },
                   child: const Text(
                     "Connect to a Crisis Team Member",
-                    style: TextStyle(fontSize: 20, color: Colors.black),
+                    style: TextStyle(fontSize: 20, color: Colors.white),
                     textAlign: TextAlign.center,
                   )),
             )),
