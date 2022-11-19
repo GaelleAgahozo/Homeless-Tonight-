@@ -1,3 +1,16 @@
-# Homeless Tonight
+# homeless_tonight
 
-The homeless tonight app will need five pages. A home screen that has three options: Shelter, victim of domestic violence, and resources, and a sign in page for either homeless or service provider.
+A new Flutter project.
+
+## Getting Started
+
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
