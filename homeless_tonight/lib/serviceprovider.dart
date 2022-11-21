@@ -7,12 +7,19 @@ class ServiceProviderScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70),
+        preferredSize: const Size.fromHeight(70),
         child: AppBar(
-          iconTheme: IconThemeData(color: Color(0xff73bfb8)),
+          iconTheme: const IconThemeData(color: Color(0xff73bfb8)),
+          centerTitle: true,
           title: Align(alignment: Alignment.center,child: Image.asset('assets/images/logoTSC.png',
               fit: BoxFit.fitWidth, height: 60, width: 130),),
           backgroundColor: Colors.white,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.account_circle),
+              onPressed: () {Navigator.pushNamed(context, '/profile');},
+            )
+          ],
         ),
       ),
       body: Text('service provider screen')

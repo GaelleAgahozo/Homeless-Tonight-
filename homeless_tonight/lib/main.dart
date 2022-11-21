@@ -32,6 +32,9 @@ class HomelessTonightApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
+        '/home': ((context) {
+          return const HomelessMainScreen();
+        }),
         '/service_home': ((context) {
           return const ServiceProviderScreen();
         }),
@@ -56,7 +59,24 @@ class HomelessTonightApp extends StatelessWidget {
                   })),
                 ],
               )
-            )
+            ),
+          );
+        }),
+        '/profile': ((context) {
+          return ProfileScreen(
+            providers: [],
+            actions: [
+              SignedOutAction((context) {
+                Navigator.of(context).pushNamedAndRemoveUntil('/home', (r) => false);
+              }),
+            ],
+            appBar: AppBar(
+              iconTheme: const IconThemeData(color: Color(0xff73bfb8)),
+              centerTitle: true,
+              title: Image.asset('assets/images/logoTSC.png',
+                  fit: BoxFit.fitWidth, height: 70, width: 110),
+              backgroundColor: Colors.white,
+            ),
           );
         }),
       },
