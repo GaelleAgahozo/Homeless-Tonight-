@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "567006692292",
+    "project_id": "homeless-tonight",
+    "storage_bucket": "homeless-tonight.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:567006692292:android:3d0343181a94107b4f1a91",
+        "android_client_info": {
+          "package_name": "com.example.homeless_tonight"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "567006692292-k2shfrlanv93uqlu7sd4d9kicrkketud.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHkX54dGPPaISrDpQJxXn8LrjmAxdELec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "567006692292-k2shfrlanv93uqlu7sd4d9kicrkketud.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "567006692292-nc9c98ictp8lusl5l89kh905i4g5h92e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.homelessTonight"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
