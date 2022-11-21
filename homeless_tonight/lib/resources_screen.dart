@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:homeless_tonight/pageTemplate.dart';
 
@@ -20,37 +21,8 @@ class ResourcesScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: ((context) =>
-                        const ResourceListScreen(title: 'Shelter', resourceList: [
-                          Resource(
-                            name: 'Shelter Service 1',
-                            description: 'A service providing shelter',
-                            hours: 'Mon-Fri: 9a - 6p',
-                            phoneNumber: '1234567890',
-                            address: '1234 Main st, Conway, AR',
-                            website: 'www.shelterservice.com'
-                          ),
-                          Resource(
-                            name: 'Shelter Service 2',
-                            description: 'A service providing shelter',
-                            hours: 'Mon-Fri: 9a - 6p',
-                            phoneNumber: '1234567890',
-                            address: '1234 Main st, Conway, AR'
-                          ),
-                          Resource(
-                            name: 'Shelter Service 3',
-                            description: 'A service providing shelter',
-                            hours: 'Mon-Fri: 9a - 6p',
-                            phoneNumber: '1234567890',
-                            address: '1234 Main st, Conway, AR'
-                          ),
-                          Resource(
-                            name: 'Shelter Service 4',
-                            description: 'A service providing shelter',
-                            hours: 'Mon-Fri: 9a - 6p',
-                            phoneNumber: '1234567890',
-                            address: '1234 Main st, Conway, AR'
-                          )
-                        ],))));
+                        ResourceListScreen(title: 'Shelter', databaseRef: shelterRef)
+                        )));
                         }),
             child: SizedBox(
               width: MediaQuery.of(context).size.width - 100,
@@ -67,37 +39,8 @@ class ResourcesScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: ((context) =>
-                        const ResourceListScreen(title: 'Food', resourceList: [
-                          Resource(
-                            name: 'Food Service 1',
-                            description: 'A service providing breakfast',
-                            hours: 'Mon-Fri: 7a - 12p',
-                            phoneNumber: '1234567890',
-                            address: '1234 Main st, Conway, AR',
-                            website: 'www.foodservice.com'
-                          ),
-                          Resource(
-                            name: 'Food Service 2',
-                            description: 'A service providing breakfast and lunch',
-                            hours: 'Mon-Fri: 9a - 6p',
-                            phoneNumber: '1234567890',
-                            address: '1234 Main st, Conway, AR'
-                          ),
-                          Resource(
-                            name: 'Food Service 3',
-                            description: 'A service providing shelter breakfast, lunch and dinner',
-                            hours: 'Mon-Fri: 9a - 9p',
-                            phoneNumber: '1234567890',
-                            address: '1234 Main st, Conway, AR'
-                          ),
-                          Resource(
-                            name: 'Food Service 4',
-                            description: 'A service providing food',
-                            hours: 'Mon-Fri: 9a - 6p',
-                            phoneNumber: '1234567890',
-                            address: '1234 Main st, Conway, AR'
-                          )
-                        ],))));
+                        ResourceListScreen(title: 'Food', databaseRef: foodRef)
+                        )));
                         }),
             child: SizedBox(
               width: MediaQuery.of(context).size.width - 100,
@@ -113,37 +56,8 @@ class ResourcesScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: ((context) =>
-                        const ResourceListScreen(title: 'Emergency Supplies', resourceList: [
-                          Resource(
-                            name: 'Emergency Supplies Service 1',
-                            description: 'A service providing emergency supplies',
-                            hours: 'Mon-Fri: 9a - 6p',
-                            phoneNumber: '1234567890',
-                            address: '1234 Main st, Conway, AR',
-                            website: 'www.laundryservice.com'
-                          ),
-                          Resource(
-                            name: 'Emergency Supplies Service 2',
-                            description: 'A service providing emergency supplies',
-                            hours: 'Mon-Fri: 9a - 6p',
-                            phoneNumber: '1234567890',
-                            address: '1234 Main st, Conway, AR'
-                          ),
-                          Resource(
-                            name: 'Emergency Supplies Service 3',
-                            description: 'A service providing emergency supplies',
-                            hours: 'Mon-Fri: 9a - 6p',
-                            phoneNumber: '1234567890',
-                            address: '1234 Main st, Conway, AR'
-                          ),
-                          Resource(
-                            name: 'Emergency Supplies Service 4',
-                            description: 'A service providing emergency supplies',
-                            hours: 'Mon-Fri: 9a - 6p',
-                            phoneNumber: '1234567890',
-                            address: '1234 Main st, Conway, AR'
-                          )
-                        ],))));
+                        ResourceListScreen(title: 'Emergency Supplies', databaseRef: emergencySuppliesRef)
+                        )));
                         }),
             child: SizedBox(
               width: MediaQuery.of(context).size.width - 100,
@@ -159,37 +73,8 @@ class ResourcesScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: ((context) =>
-                        const ResourceListScreen(title: 'Laundry', resourceList: [
-                          Resource(
-                            name: 'Laundry Service 1',
-                            description: 'A service providing laundry',
-                            hours: 'Mon-Fri: 9a - 6p',
-                            phoneNumber: '1234567890',
-                            address: '1234 Main st, Conway, AR',
-                            website: 'www.shelterservice.com'
-                          ),
-                          Resource(
-                            name: 'Laundry Service 2',
-                            description: 'A service providing laundry',
-                            hours: 'Mon-Fri: 9a - 6p',
-                            phoneNumber: '1234567890',
-                            address: '1234 Main st, Conway, AR'
-                          ),
-                          Resource(
-                            name: 'Laundry Service 3',
-                            description: 'A service providing laundry',
-                            hours: 'Mon-Fri: 9a - 6p',
-                            phoneNumber: '1234567890',
-                            address: '1234 Main st, Conway, AR'
-                          ),
-                          Resource(
-                            name: 'Laundry Service 4',
-                            description: 'A service providing laundry',
-                            hours: 'Mon-Fri: 9a - 6p',
-                            phoneNumber: '1234567890',
-                            address: '1234 Main st, Conway, AR'
-                          )
-                        ],))));
+                        ResourceListScreen(title: 'Laundry', databaseRef: laundryRef)
+                        )));
                         }),
             child: SizedBox(
               width: MediaQuery.of(context).size.width - 100,
@@ -209,15 +94,15 @@ class ResourcesScreen extends StatelessWidget {
 class ResourceListScreen extends StatelessWidget {
   /// Creates a screen to dispay a list of resources.
   /// 
-  /// [title] and [resourceList] are required parameters and cannot be null.
+  /// [title] and [databaseRef] are required parameters and cannot be null.
   /// 
   ///   * [title] must be a string that will be displayed as the title of the page.
-  ///   * [resourceList] must be a List<Resource>, where each item is a Resource
-  ///     containing the information for a resource for the homeless.
-  const ResourceListScreen({super.key, required this.title, required this.resourceList});
+  ///   * [databaseRef] must be a reference to a firestore database containing as list
+  ///     of resources.
+  const ResourceListScreen({super.key, required this.title, required this.databaseRef});
 
   final String title;
-  final List<Resource> resourceList;
+  final CollectionReference<Resource> databaseRef;
 
   @override
   Widget build(BuildContext context) {
@@ -246,40 +131,71 @@ class ResourceListScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Expanded(
-              child: ListView(
-              children: resourceList.map((resource) {
-                return InkWell(
-                  onTap:() {
-                    _displayResourceInfoDialog(context, resource);
-                  },
-                  child: Card(
-                    color: Theme.of(context).colorScheme.surface,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: <Widget>[
-                          Text(resource.name,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.onSurface,
-                              fontSize: 24
-                            ),
-                          ),
-                          Text(resource.description,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.onSurface,
-                              fontSize: 18
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                );
-              },).toList()
+              child: StreamBuilder<QuerySnapshot<Resource>>(
+                stream: databaseRef.orderBy('title', descending: false).snapshots(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return Center(
+                      child: Text(snapshot.error.toString()),
+                    );
+                  }
+
+                  if (!snapshot.hasData) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+
+                  final data = snapshot.requireData;
+
+                  return ListView.builder(
+                    itemCount: data.size,
+                    itemBuilder: (context, index) {
+                      return ResourceListItem(
+                        resource: data.docs[index].data(),
+                      );
+                    },
+                  );
+                },
               ),
-            )],
+            )]
+        ),
+      ),
+    );
+  }
+}
+
+class ResourceListItem extends StatelessWidget {
+  const ResourceListItem({super.key, required this.resource});
+
+  final Resource resource;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap:() {
+        _displayResourceInfoDialog(context, resource);
+      },
+      child: Card(
+        color: Theme.of(context).colorScheme.surface,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: <Widget>[
+              Text(resource.name,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onSurface,
+                  fontSize: 24
+                ),
+              ),
+              Text(resource.shortDescription,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onSurface,
+                  fontSize: 18
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -298,7 +214,7 @@ Future<void> _displayResourceInfoDialog(BuildContext context, Resource resource)
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                resource.description
+                resource.longDescription
               ),
               const SizedBox(height: 10,),
               if (resource.hours != null) Text(
@@ -334,6 +250,7 @@ Future<void> _displayResourceInfoDialog(BuildContext context, Resource resource)
     );
   }
 
+@immutable
 class Resource {
   /// A container class holding the attributes of a resource for the homeless
   /// 
@@ -341,20 +258,81 @@ class Resource {
   /// 
   /// Parameters:
   ///   * [name] is the String name of the resource.
-  ///   * [description] is a short String description of the services
+  ///   * [shortDescription] is a short String description of the services
+  ///     provided by the resource.
+  ///   * [longDescription] is a longer String description of the services
   ///     provided by the resource.
   ///   * (Optional) [hours] are the open hours of the resource, provided as a string.
   ///   * (Optional) [phoneNumber] is the phone number of the resource, provided as a string.
   ///   * (Optional) [address] is the street address of the resource, provided as a string.
   ///   * (Optional) [website] is the web address of the resource, provided as string.
-  const Resource({required this.name, required this.description, this.hours, this.phoneNumber, this.address, this.website});
+  const Resource({
+    required this.name,
+    required this.shortDescription,
+    required this.longDescription,
+    this.hours,
+    this.phoneNumber,
+    this.address,
+    this.website
+    });
+
+  Resource.fromJson(Map<String, Object?> json)
+      : this(
+          name: json['title']! as String,
+          shortDescription: json['short_description']! as String,
+          longDescription: json['long_description']! as String,
+          hours: json['hours']! as String,
+          phoneNumber: json['phone_number']! as String,
+          address: json['street_address']! as String,
+          website: json['website_address']! as String,
+        );
 
   final String name;
   /// A short String description of the resource provided.
-  final String description;
+  final String shortDescription;
+  final String longDescription;
   final String? hours;
   final String? phoneNumber;
   final String? address;
   final String? website;
 
+  Map<String, Object?> toJson() {
+    return {
+      'name': name,
+      'short_description': shortDescription,
+      'long_description': longDescription,
+      'hours': hours,
+      'phone_number': phoneNumber,
+      'address': address,
+      'website': website,
+    };
+  }
 }
+
+final foodRef = FirebaseFirestore.instance
+    .collection('resources_food')
+    .withConverter<Resource>(
+      fromFirestore: (snapshots, _) => Resource.fromJson(snapshots.data()!),
+      toFirestore: (resource, _) => resource.toJson(),
+    );
+
+final shelterRef = FirebaseFirestore.instance
+    .collection('resources_shelter')
+    .withConverter<Resource>(
+      fromFirestore: (snapshots, _) => Resource.fromJson(snapshots.data()!),
+      toFirestore: (resource, _) => resource.toJson(),
+    );
+
+final laundryRef = FirebaseFirestore.instance
+    .collection('resources_laundry')
+    .withConverter<Resource>(
+      fromFirestore: (snapshots, _) => Resource.fromJson(snapshots.data()!),
+      toFirestore: (resource, _) => resource.toJson(),
+    );
+
+final emergencySuppliesRef = FirebaseFirestore.instance
+    .collection('resources_supplies')
+    .withConverter<Resource>(
+      fromFirestore: (snapshots, _) => Resource.fromJson(snapshots.data()!),
+      toFirestore: (resource, _) => resource.toJson(),
+    );
