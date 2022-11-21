@@ -11,17 +11,12 @@ import 'package:firebase_auth/firebase_auth.dart'
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:homeless_tonight/serviceprovider.dart';
 
 import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform);
-
-  FirebaseUIAuth.configureProviders([
-      EmailAuthProvider(),
-    ]);
 
   runApp(ChangeNotifierProvider(
     create: (context) => ApplicationState(),
@@ -37,8 +32,11 @@ class HomelessTonightApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-        '/service_home': ((context) {
+        '/home': ((context) {
           return const HomelessMainScreen();
+        }),
+        '/service_home': ((context) {
+          return const ServiceProviderScreen();
         }),
         '/sign_in': ((context) {
           return Consumer<ApplicationState>(
@@ -56,12 +54,29 @@ class HomelessTonightApp extends StatelessWidget {
                       if (state is UserCreated) {
                         user.updateDisplayName(user.email!.split('@')[0]);
                       }
-                      Navigator.of(context).pushReplacementNamed('/service_home');
+                      Navigator.of(context).pushNamedAndRemoveUntil('/service_home', (r) => false);
                     }
                   })),
                 ],
               )
-            )
+            ),
+          );
+        }),
+        '/profile': ((context) {
+          return ProfileScreen(
+            providers: [],
+            actions: [
+              SignedOutAction((context) {
+                Navigator.of(context).pushNamedAndRemoveUntil('/home', (r) => false);
+              }),
+            ],
+            appBar: AppBar(
+              iconTheme: const IconThemeData(color: Color(0xff73bfb8)),
+              centerTitle: true,
+              title: Image.asset('assets/images/logoTSC.png',
+                  fit: BoxFit.fitWidth, height: 70, width: 110),
+              backgroundColor: Colors.white,
+            ),
           );
         }),
       },
@@ -101,7 +116,11 @@ class HomelessTonightApp extends StatelessWidget {
           bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Bukhari Script'),
         ),
       ),
-      home: const HomelessMainScreen(),
+      home: Consumer<ApplicationState>(
+        builder:(context, appState, _) => (appState.loggedIn == LoginStatus.loggedIn)?
+        const ServiceProviderScreen():
+        const HomelessMainScreen()
+        ),
     );
   }
 }
@@ -118,6 +137,13 @@ class ApplicationState extends ChangeNotifier {
   LoginStatus get loggedIn => _loggedIn;
 
   Future<void> init() async {
+
+    await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform);
+
+    FirebaseUIAuth.configureProviders([
+      EmailAuthProvider(),
+    ]);
 
     FirebaseAuth.instance.userChanges().listen((user) {
       if (user != null) {
