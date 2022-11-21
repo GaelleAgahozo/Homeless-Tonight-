@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 
-class HomelessTonightPage extends StatelessWidget {
-  const HomelessTonightPage({super.key, required this.child});
+
+class HomelessTonightPage extends StatefulWidget {
+  HomelessTonightPage({super.key, required this.child});
 
   final Widget child;
+  bool alertBadge = false;
 
+  @override
+  State<HomelessTonightPage> createState() => _HomelessTonightPageState();
+}
+
+class _HomelessTonightPageState extends State<HomelessTonightPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,20 +25,28 @@ class HomelessTonightPage extends StatelessWidget {
           backgroundColor: Colors.white,
           actions: [
             IconButton(
-              icon: (false)? // switches in the condition that there is a new message
+              icon: (widget.alertBadge)? // switches in the condition that there is a new message
                 Stack(
                   children: <Widget>[
                     Icon(Icons.message),
                     Positioned(  // draw a red marble
-                      top: -2.0,
-                      right: -2.0,
+                      top: 0.0,
+                      right: 0.0,
                       child: new Icon(Icons.brightness_1, size: 12.0, 
                         color: Colors.redAccent),
                     )
                   ]
                 ):
                 const Icon(Icons.message),
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  if (widget.alertBadge) {
+                    widget.alertBadge = false;
+                  } else {
+                    widget.alertBadge = true;
+                  }
+                });
+              },
             )
           ],
         ),
@@ -48,7 +63,7 @@ class HomelessTonightPage extends StatelessWidget {
                   color: Theme.of(context).colorScheme.secondary)),
         ),
         Expanded(
-          child: child,
+          child: widget.child,
         )
       ]),
     );
