@@ -5,7 +5,6 @@ import 'package:homeless_tonight/homeless.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-
 import 'package:firebase_auth/firebase_auth.dart'
     hide EmailAuthProvider, PhoneAuthProvider;
 import 'package:firebase_core/firebase_core.dart';
@@ -41,25 +40,25 @@ class HomelessTonightApp extends StatelessWidget {
         '/sign_in': ((context) {
           return Consumer<ApplicationState>(
             builder: ((context, appState, child) => SignInScreen(
-                showAuthActionSwitch: false,
-                actions: [
-                  AuthStateChangeAction(((context, state) {
-                    if (state is SignedIn || state is UserCreated) {
-                      var user = (state is SignedIn)
-                          ? state.user
-                          : (state as UserCreated).credential.user;
-                      if (user == null) {
-                        return;
+                  showAuthActionSwitch: false,
+                  actions: [
+                    AuthStateChangeAction(((context, state) {
+                      if (state is SignedIn || state is UserCreated) {
+                        var user = (state is SignedIn)
+                            ? state.user
+                            : (state as UserCreated).credential.user;
+                        if (user == null) {
+                          return;
+                        }
+                        if (state is UserCreated) {
+                          user.updateDisplayName(user.email!.split('@')[0]);
+                        }
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            '/service_home', (r) => false);
                       }
-                      if (state is UserCreated) {
-                        user.updateDisplayName(user.email!.split('@')[0]);
-                      }
-                      Navigator.of(context).pushNamedAndRemoveUntil('/service_home', (r) => false);
-                    }
-                  })),
-                ],
-              )
-            ),
+                    })),
+                  ],
+                )),
           );
         }),
         '/profile': ((context) {
@@ -67,7 +66,8 @@ class HomelessTonightApp extends StatelessWidget {
             providers: [],
             actions: [
               SignedOutAction((context) {
-                Navigator.of(context).pushNamedAndRemoveUntil('/home', (r) => false);
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil('/home', (r) => false);
               }),
             ],
             appBar: AppBar(
@@ -117,10 +117,10 @@ class HomelessTonightApp extends StatelessWidget {
         ),
       ),
       home: Consumer<ApplicationState>(
-        builder:(context, appState, _) => (appState.loggedIn == LoginStatus.loggedIn)?
-        const ServiceProviderScreen():
-        const HomelessMainScreen()
-        ),
+          builder: (context, appState, _) =>
+              (appState.loggedIn == LoginStatus.loggedIn)
+                  ? const ServiceProviderScreen()
+                  : const HomelessMainScreen()),
     );
   }
 }
@@ -137,7 +137,6 @@ class ApplicationState extends ChangeNotifier {
   LoginStatus get loggedIn => _loggedIn;
 
   Future<void> init() async {
-
     await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform);
 

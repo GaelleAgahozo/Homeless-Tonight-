@@ -1,6 +1,9 @@
+import 'dart:html';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:homeless_tonight/pageTemplate.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ResourcesScreen extends StatelessWidget {
   /// Creates a screen that displays the types of resources
@@ -165,8 +168,8 @@ class ResourceListItem extends StatelessWidget {
 
   final Resource resource;
 
-  final TextStyle _textStyle =
-      const TextStyle(color: Colors.black, fontSize: 24);
+  final TextStyle _textStyle = const TextStyle(
+      color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold);
 
   @override
   Widget build(BuildContext context) {
@@ -176,9 +179,7 @@ class ResourceListItem extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ListTile(
                   title: Text(resource.name,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                          fontSize: 24.0, fontWeight: FontWeight.bold)),
+                      textAlign: TextAlign.center, style: _textStyle),
                   subtitle: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -202,51 +203,6 @@ class ResourceListItem extends StatelessWidget {
                       ])))))
     ]);
   }
-}
-// Need one for hours, website, and phone number
-
-Future<void> _displayResourceInfoDialog(
-    BuildContext context, Resource resource) async {
-  return showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text(
-            resource.name,
-            textAlign: TextAlign.center,
-          ),
-          content: Column(mainAxisSize: MainAxisSize.min, children: [
-            Text(resource.longDescription),
-            const SizedBox(
-              height: 10,
-            ),
-            if (resource.hours != null) Text(resource.hours!),
-            const SizedBox(
-              height: 10,
-            ),
-            if (resource.phoneNumber != null) Text(resource.phoneNumber!),
-            const SizedBox(
-              height: 10,
-            ),
-            if (resource.address != null) Text(resource.address!),
-            const SizedBox(
-              height: 10,
-            ),
-            if (resource.website != null) Text(resource.website!),
-          ]),
-          actions: [
-            Align(
-              alignment: Alignment.center,
-              child: TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text('Done'),
-              ),
-            )
-          ],
-        );
-      });
 }
 
 // class NewResourcesList extends StatelessWidget {
