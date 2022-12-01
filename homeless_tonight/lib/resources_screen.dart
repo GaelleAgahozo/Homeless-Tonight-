@@ -1,9 +1,6 @@
-import 'dart:html';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:homeless_tonight/pageTemplate.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ResourcesScreen extends StatelessWidget {
   /// Creates a screen that displays the types of resources
