@@ -1,0 +1,21 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
+
+class ListProviders extends StatelessWidget {
+  //const MyWidget({super.key});
+  final providers = ["Shelter Provider", "Food Provider"];
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: providers.length,
+        itemBuilder: (context, index) {
+          return Card(
+              child: ListTile(
+            title: Text(providers[index]),
+          ));
+        });
+  }
+}
