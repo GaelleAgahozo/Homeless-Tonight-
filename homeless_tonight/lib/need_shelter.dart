@@ -21,7 +21,7 @@ class Shelter extends StatelessWidget {
           child: Card(
               color: Theme.of(context).colorScheme.surface,
               child: const Text(
-                "\nI am a homeless\n in Conway and do not have \n a place to sleep tonight\n",
+                "\nI am homeless\n in Conway and do not have \n a place to sleep tonight\n",
                 style: TextStyle(fontSize: 22, color: Colors.white),
                 textAlign: TextAlign.center,
               ))),
