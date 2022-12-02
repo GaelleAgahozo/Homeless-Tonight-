@@ -9,13 +9,14 @@ class ListProviders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return ListView.separated(
         itemCount: providers.length,
         itemBuilder: (context, index) {
           return Card(
               child: ListTile(
             title: Text(providers[index]),
           ));
-        });
+        },
+        separatorBuilder: (BuildContext context, int index) => const Divider());
   }
 }
