@@ -20,6 +20,10 @@ class ListProviders extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => ChatScreen()));
             },
             title: Text(providers[index]),
+            trailing: TextButton(
+              child: Text("Claim"),
+              onPressed: () {},
+            ),
           ));
         },
         separatorBuilder: (BuildContext context, int index) => const Divider());
