@@ -22,7 +22,7 @@ class _ChatScreenState extends State<ChatScreen> {
             backgroundColor: Colors.white,
           )),
       body: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-        Expanded(child: widget),
+        //Expanded(child: widget),
         MessageBar(
           onSend: null,
         )
