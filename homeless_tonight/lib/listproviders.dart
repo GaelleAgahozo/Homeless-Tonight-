@@ -6,12 +6,13 @@ import 'package:homeless_tonight/messageui.dart';
 
 class ListProviders extends StatelessWidget {
   //const MyWidget({super.key});
-  final providers = ["Shelter Provider", "Food Provider"];
+  final requester = ["Tom", "Emilia", "John Rambo"];
+  final sub = ["Food", "Shelter", "Medicine"];
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-        itemCount: providers.length,
+        itemCount: requester.length,
         itemBuilder: (context, index) {
           return Card(
               child: ListTile(
@@ -19,7 +20,8 @@ class ListProviders extends StatelessWidget {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => ChatScreen()));
             },
-            title: Text(providers[index]),
+            title: Text(requester[index]),
+            subtitle: Text(sub[index]),
             trailing: TextButton(
               child: Text("Claim"),
               onPressed: () {},
