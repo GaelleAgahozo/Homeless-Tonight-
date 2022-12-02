@@ -1,6 +1,9 @@
+//import 'dart:html';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:homeless_tonight/pageTemplate.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ResourcesScreen extends StatelessWidget {
   /// Creates a screen that displays the types of resources
@@ -13,9 +16,7 @@ class ResourcesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return HomelessTonightPage(
       child: Column(children: <Widget>[
-        // const Spacer(
-        //   flex: 1,
-        // ),
+        const Spacer(),
         ElevatedButton(
             onPressed: (() {
               Navigator.push(
@@ -167,83 +168,53 @@ class ResourceListItem extends StatelessWidget {
 
   final Resource resource;
 
+  final TextStyle _textStyle = const TextStyle(
+      color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold);
+
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        _displayResourceInfoDialog(context, resource);
-      },
-      child: Card(
-        color: Theme.of(context).colorScheme.surface,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: <Widget>[
-              Text(
-                resource.name,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Theme.of(context).colorScheme.onSurface,
-                    fontSize: 24),
-              ),
-              Text(
-                resource.shortDescription,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Theme.of(context).colorScheme.onSurface,
-                    fontSize: 18),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
+    return ListView(shrinkWrap: true, children: [
+      Card(
+          child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListTile(
+                  title: Text(resource.name,
+                      textAlign: TextAlign.center, style: _textStyle),
+                  subtitle: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(mainAxisSize: MainAxisSize.min, children: [
+                        Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(resource.longDescription,
+                                textAlign: TextAlign.center)),
+                        Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("Address: ${resource.address}")),
+                        Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child:
+                                Text("Phone Number: ${resource.phoneNumber}")),
+                        Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("Hours: ${resource.hours}")),
+                        Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("Website: ${resource.website}"))
+                      ])))))
+    ]);
   }
 }
 
-Future<void> _displayResourceInfoDialog(
-    BuildContext context, Resource resource) async {
-  return showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text(
-            resource.name,
-            textAlign: TextAlign.center,
-          ),
-          content: Column(mainAxisSize: MainAxisSize.min, children: [
-            Text(resource.longDescription),
-            const SizedBox(
-              height: 10,
-            ),
-            if (resource.hours != null) Text(resource.hours!),
-            const SizedBox(
-              height: 10,
-            ),
-            if (resource.phoneNumber != null) Text(resource.phoneNumber!),
-            const SizedBox(
-              height: 10,
-            ),
-            if (resource.address != null) Text(resource.address!),
-            const SizedBox(
-              height: 10,
-            ),
-            if (resource.website != null) Text(resource.website!),
-          ]),
-          actions: [
-            Align(
-              alignment: Alignment.center,
-              child: TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text('Done'),
-              ),
-            )
-          ],
-        );
-      });
-}
+// class NewResourcesList extends StatelessWidget {
+//   const NewResourcesList({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return ListView(children: const <Widget>[
+//       ExpansionTile(title: Text("Shelter Service 1")),
+//     ]);
+//   }
+// }
 
 @immutable
 class Resource {

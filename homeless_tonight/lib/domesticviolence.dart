@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:homeless_tonight/pageTemplate.dart';
 
+import 'messageui.dart';
+
 class DomesticViolenceScreen extends StatelessWidget {
   const DomesticViolenceScreen({super.key});
 
@@ -121,6 +123,8 @@ Future<void> _displayTextInputDialog(BuildContext context) async {
                 _handleNewItem(nameText);
                 _handleNewItem(needText);
                 Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ChatScreen()));
               },
             ),
 

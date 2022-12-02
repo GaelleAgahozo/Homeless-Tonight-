@@ -4,6 +4,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:homeless_tonight/pageTemplate.dart';
 import 'package:homeless_tonight/resources_screen.dart';
 
+import 'messageui.dart';
+
 class Shelter extends StatelessWidget {
   const Shelter({super.key});
 
@@ -94,6 +96,8 @@ Future<void> _displayTextInputDialog(BuildContext context) async {
                 _handleNewItem(locationText);
                 _handleNewItem(shelterText);
                 Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ChatScreen()));
               },
             ),
 
