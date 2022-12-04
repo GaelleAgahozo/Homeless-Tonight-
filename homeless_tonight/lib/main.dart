@@ -146,6 +146,7 @@ class ApplicationState extends ChangeNotifier {
 
     FirebaseAuth.instance.userChanges().listen((user) {
       if (user != null) {
+        print(user.isAnonymous);
         if (user.isAnonymous) {
           _loggedIn = LoginStatus.loggedInAnon;
         } else {
@@ -156,6 +157,8 @@ class ApplicationState extends ChangeNotifier {
       }
       notifyListeners();
     });
+
+    await FirebaseAuth.instance.signInAnonymously();
   }
 }
 

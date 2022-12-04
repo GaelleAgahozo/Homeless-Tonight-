@@ -123,8 +123,8 @@ Future<void> _displayTextInputDialog(BuildContext context) async {
                 _handleNewItem(nameText);
                 _handleNewItem(needText);
                 Navigator.pop(context);
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ChatScreen()));
+                // Navigator.push(context,
+                //     MaterialPageRoute(builder: (context) => ChatScreen()));
               },
             ),
 
