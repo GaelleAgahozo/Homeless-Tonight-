@@ -1,10 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:homeless_tonight/message_class.dart';
 import 'package:homeless_tonight/pageTemplate.dart';
 import 'package:homeless_tonight/resources_screen.dart';
+import 'package:homeless_tonight/firebase_refs.dart';
 
 import 'messageui.dart';
+
+final FirebaseAuth auth = FirebaseAuth.instance;
 
 class Shelter extends StatelessWidget {
   const Shelter({super.key});
@@ -79,7 +85,7 @@ Future<void> _displayTextInputDialog(BuildContext context) async {
             ),
             TextField(
               onChanged: (value) {
-                locationText = value;
+                shelterText = value;
               },
               controller: shelterController,
               decoration: const InputDecoration(
@@ -92,12 +98,10 @@ Future<void> _displayTextInputDialog(BuildContext context) async {
               style: yesStyle,
               child: const Text('OK'),
               onPressed: () {
-                _handleNewItem(nameText);
-                _handleNewItem(locationText);
-                _handleNewItem(shelterText);
+                _handleNewItem(nameText, locationText, shelterText);
                 Navigator.pop(context);
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ChatScreen()));
+                // Navigator.push(context,
+                //     MaterialPageRoute(builder: (context) => ChatScreen()));
               },
             ),
 
@@ -120,8 +124,20 @@ Future<void> _displayTextInputDialog(BuildContext context) async {
       });
 }
 
-void _handleNewItem(String itemText) {
+void _handleNewItem(String name, String location, String need) {
   nameController.clear();
   locationController.clear();
   shelterController.clear();
+
+  auth.signInAnonymously();
+
+  UnclaimedMessage newMessage = UnclaimedMessage(
+      userAddress: auth.currentUser!.uid,
+      userDisplayName: name,
+      location: location,
+      need: need,
+      description: need,
+      time: DateTime.now().millisecondsSinceEpoch.toString());
+
+  unclaimedMessageRef.doc().set(newMessage);
 }

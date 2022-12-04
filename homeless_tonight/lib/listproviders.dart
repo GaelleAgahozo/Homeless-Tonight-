@@ -1,33 +1,86 @@
-import 'package:flutter/cupertino.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:homeless_tonight/messageui.dart';
+import 'package:homeless_tonight/message_class.dart';
+import 'package:homeless_tonight/firebase_refs.dart';
+
+final FirebaseAuth auth = FirebaseAuth.instance;
 
 class ListProviders extends StatelessWidget {
-  //const MyWidget({super.key});
-  final requester = ["Tom", "Emilia", "John Rambo"];
-  final sub = ["Food", "Shelter", "Medicine"];
+  const ListProviders({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-        itemCount: requester.length,
-        itemBuilder: (context, index) {
-          return Card(
-              child: ListTile(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ChatScreen()));
+    return StreamBuilder<QuerySnapshot<UnclaimedMessage>>(
+      stream:
+          unclaimedMessageRef.orderBy('time', descending: false).snapshots(),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Center(
+            child: Text(snapshot.error.toString()),
+          );
+        }
+
+        if (!snapshot.hasData) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        final data = snapshot.requireData;
+
+        return ListView.separated(
+            itemCount: data.size,
+            itemBuilder: (context, index) {
+              return Card(
+                  child: ListTile(
+                onTap: () {},
+                title: Row(
+                  children: [
+                    Expanded(
+                        child: Text(data.docs[index].data().userDisplayName)),
+                    Expanded(child: Text(data.docs[index].data().need)),
+                  ],
+                ),
+                subtitle: Text(data.docs[index].data().description),
+                trailing: TextButton(
+                  child: const Text("Claim"),
+                  onPressed: () async {
+                    CollectionReference<Message> convoRef = getConvoRef(
+                        data.docs[index].data().userAddress,
+                        auth.currentUser!.uid);
+
+                    Message firstMessage = Message(
+                        serviceIsSender: false,
+                        serviceAddress: auth.currentUser!.uid,
+                        serviceDisplayName: auth.currentUser!.displayName!,
+                        userAddress: data.docs[index].data().userAddress,
+                        userDisplayName:
+                            data.docs[index].data().userDisplayName,
+                        content: data.docs[index].data().description,
+                        time: data.docs[index].data().time);
+
+                    convoRef.doc().set(firstMessage);
+
+                    FirebaseFirestore.instance.runTransaction(
+                        (transaction) async =>
+                            transaction.delete(data.docs[index].reference));
+
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ChatScreen(
+                                userID: data.docs[index].data().userAddress,
+                                serviceID: auth.currentUser!.uid)));
+                  },
+                ),
+              ));
             },
-            title: Text(requester[index]),
-            subtitle: Text(sub[index]),
-            trailing: TextButton(
-              child: Text("Claim"),
-              onPressed: () {},
-            ),
-          ));
-        },
-        separatorBuilder: (BuildContext context, int index) => const Divider());
+            separatorBuilder: (BuildContext context, int index) =>
+                const Divider());
+      },
+    );
   }
 }
