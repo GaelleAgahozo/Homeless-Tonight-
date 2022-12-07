@@ -2,8 +2,21 @@ import 'package:flutter/material.dart';
 
 import 'listproviders.dart';
 
-class ServiceProviderScreen extends StatelessWidget {
+class ServiceProviderScreen extends StatefulWidget {
   const ServiceProviderScreen({super.key});
+
+  @override
+  State<ServiceProviderScreen> createState() => _ServiceProviderScreenState();
+}
+
+class _ServiceProviderScreenState extends State<ServiceProviderScreen> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +43,17 @@ class ServiceProviderScreen extends StatelessWidget {
         ),
       ),
       body: ListProviders(),
-      bottomNavigationBar:
-          BottomNavigationBar(items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-            icon: Icon(Icons.mark_chat_unread_rounded), label: "Unclaimed"),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.mark_chat_read_rounded), label: "Claimed")
-      ]),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+              icon: Icon(Icons.mark_chat_unread_rounded), label: "Unclaimed"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.mark_chat_read_rounded), label: "Claimed")
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.teal,
+        onTap: _onItemTapped,
+      ),
     );
   }
 }
