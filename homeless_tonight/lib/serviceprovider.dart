@@ -30,6 +30,13 @@ class ServiceProviderScreen extends StatelessWidget {
         ),
       ),
       body: ListProviders(),
+      bottomNavigationBar:
+          BottomNavigationBar(items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+            icon: Icon(Icons.mark_chat_unread_rounded), label: "Unclaimed"),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.mark_chat_read_rounded), label: "Claimed")
+      ]),
     );
   }
 }
