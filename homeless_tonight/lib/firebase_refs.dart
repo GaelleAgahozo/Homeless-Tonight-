@@ -9,13 +9,20 @@ final unclaimedMessageRef = FirebaseFirestore.instance
       toFirestore: (message, _) => message.toJson(),
     );
 
-CollectionReference<Message> getConvoRef(String userID, String serviceID) {
-  return FirebaseFirestore.instance
-      .collection('messages')
-      .doc("$userID-$serviceID")
-      .collection("$userID-$serviceID")
-      .withConverter<Message>(
-        fromFirestore: (snapshots, _) => Message.fromJson(snapshots.data()!),
-        toFirestore: (message, _) => message.toJson(),
-      );
+List<CollectionReference<Message>> getConvoRef(
+    String userID, String serviceID) {
+  return [
+    FirebaseFirestore.instance
+        .collection('messages')
+        .doc("$userID-$serviceID")
+        .collection("$userID-$serviceID")
+        .withConverter<Message>(
+          fromFirestore: (snapshots, _) => Message.fromJson(snapshots.data()!),
+          toFirestore: (message, _) => message.toJson(),
+        ),
+    FirebaseFirestore.instance.collection('messages').withConverter<Message>(
+          fromFirestore: (snapshots, _) => Message.fromJson(snapshots.data()!),
+          toFirestore: (message, _) => message.toJson(),
+        ),
+  ];
 }

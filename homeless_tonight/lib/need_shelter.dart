@@ -17,6 +17,7 @@ class Shelter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    auth.signInAnonymously();
     return HomelessTonightPage(
         child: Column(children: [
       const Align(
