@@ -37,7 +37,7 @@ class _ChatScreenState extends State<ChatScreen> {
       body: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
         Expanded(
           child: StreamBuilder<QuerySnapshot<Message>>(
-            stream: getConvoRef(widget.userID, widget.serviceID)
+            stream: getConvoRef(widget.userID, widget.serviceID)[0]
                 .orderBy('time', descending: false)
                 .snapshots(),
             builder: (context, snapshot) {
@@ -62,9 +62,12 @@ class _ChatScreenState extends State<ChatScreen> {
                     return BubbleSpecialThree(
                       text: data.docs[index].data().content,
                       tail: false,
-                      isSender: (data.docs[index].data().serviceIsSender &&
-                          data.docs[index].data().serviceAddress ==
-                              auth.currentUser!.uid),
+                      isSender: ((data.docs[index].data().serviceIsSender &&
+                              data.docs[index].data().serviceAddress ==
+                                  auth.currentUser!.uid) ||
+                          (!data.docs[index].data().serviceIsSender &&
+                              data.docs[index].data().userAddress ==
+                                  auth.currentUser!.uid)),
                     );
                   }));
             },
@@ -73,7 +76,7 @@ class _ChatScreenState extends State<ChatScreen> {
         MessageBar(
           onSend: ((message) {
             CollectionReference<Message> ref =
-                getConvoRef(widget.userID, widget.serviceID);
+                getConvoRef(widget.userID, widget.serviceID)[0];
 
             Message newMessage = Message(
               serviceIsSender: widget.serviceID == auth.currentUser!.uid,

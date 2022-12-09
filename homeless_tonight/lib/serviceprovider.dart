@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:homeless_tonight/conversation_list.dart';
 
 import 'listproviders.dart';
 
@@ -42,7 +43,10 @@ class _ServiceProviderScreenState extends State<ServiceProviderScreen> {
           ],
         ),
       ),
-      body: ListProviders(),
+      body: const [
+        ListProviders(),
+        ListConversations(isService: true)
+      ][_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

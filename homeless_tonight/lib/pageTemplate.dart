@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-
+import 'package:homeless_tonight/conversation_screen.dart';
 
 class HomelessTonightPage extends StatefulWidget {
   HomelessTonightPage({super.key, required this.child});
 
   final Widget child;
-  bool alertBadge = false;
 
   @override
   State<HomelessTonightPage> createState() => _HomelessTonightPageState();
@@ -25,26 +24,26 @@ class _HomelessTonightPageState extends State<HomelessTonightPage> {
           backgroundColor: Colors.white,
           actions: [
             IconButton(
-              icon: (widget.alertBadge)? // switches in the condition that there is a new message
-                Stack(
-                  children: <Widget>[
-                    Icon(Icons.message),
-                    Positioned(  // draw a red marble
-                      top: 0.0,
-                      right: 0.0,
-                      child: new Icon(Icons.brightness_1, size: 12.0, 
-                        color: Colors.redAccent),
-                    )
-                  ]
-                ):
-                const Icon(Icons.message),
+              icon: (false)
+                  ? // switches in the condition that there is a new message
+                  Stack(children: <Widget>[
+                      Icon(Icons.message),
+                      Positioned(
+                        // draw a red marble
+                        top: 0.0,
+                        right: 0.0,
+                        child: new Icon(Icons.brightness_1,
+                            size: 12.0, color: Colors.redAccent),
+                      )
+                    ])
+                  : const Icon(Icons.message),
               onPressed: () {
                 setState(() {
-                  if (widget.alertBadge) {
-                    widget.alertBadge = false;
-                  } else {
-                    widget.alertBadge = true;
-                  }
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: ((context) =>
+                              const UserConversationScreen())));
                 });
               },
             )

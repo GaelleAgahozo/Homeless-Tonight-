@@ -48,7 +48,7 @@ class ListProviders extends StatelessWidget {
                 trailing: TextButton(
                   child: const Text("Claim"),
                   onPressed: () async {
-                    CollectionReference<Message> convoRef = getConvoRef(
+                    List<CollectionReference<Message>> convoRef = getConvoRef(
                         data.docs[index].data().userAddress,
                         auth.currentUser!.uid);
 
@@ -62,7 +62,20 @@ class ListProviders extends StatelessWidget {
                         content: data.docs[index].data().description,
                         time: data.docs[index].data().time);
 
-                    convoRef.doc().set(firstMessage);
+                    convoRef[0].doc().set(firstMessage);
+
+                    convoRef[1]
+                        .doc(
+                            "$data.docs[index].data().userAddress-$auth.currentUser!.uid")
+                        .set(Message(
+                            serviceIsSender: false,
+                            serviceAddress: auth.currentUser!.uid,
+                            serviceDisplayName: auth.currentUser!.displayName!,
+                            userAddress: data.docs[index].data().userAddress,
+                            userDisplayName:
+                                data.docs[index].data().userDisplayName,
+                            content: '',
+                            time: data.docs[index].data().time));
 
                     FirebaseFirestore.instance.runTransaction(
                         (transaction) async =>
