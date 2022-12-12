@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:homeless_tonight/firebase_refs.dart';
 import 'package:homeless_tonight/pageTemplate.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import 'message_class.dart';
-import 'messageui.dart';
 
 final FirebaseAuth auth = FirebaseAuth.instance;
 
@@ -34,7 +32,10 @@ class DomesticViolenceScreen extends StatelessWidget {
         Padding(
             padding: const EdgeInsets.only(top: 5, bottom: 30),
             child: TextButton(
-                onPressed: () {},
+                onPressed: () async {
+                  launchUrl(Uri.parse('tel:18663582265'),
+                      mode: LaunchMode.platformDefault);
+                },
                 child: const Text("1-866-358-2265",
                     style:
                         TextStyle(fontSize: 24, fontWeight: FontWeight.bold)))),
@@ -53,12 +54,8 @@ class DomesticViolenceScreen extends StatelessWidget {
               child: ElevatedButton(
                   onPressed: () async {
                     //indirect phone call
-                    // ignore: deprecated_member_use
-                    launch('tel:911');
-
-                    // await FlutterPhoneDirectCaller.callNumber(911);
-                    // launch('tel:911');
-                    // _displayTextInputDialog(context);
+                    launchUrl(Uri.parse('tel:2175533089'),
+                        mode: LaunchMode.platformDefault);
                   },
                   child: const Text(
                     "Call 911",
@@ -113,14 +110,13 @@ class DomesticViolenceScreen extends StatelessWidget {
 final TextEditingController nameController = TextEditingController();
 final TextEditingController needController = TextEditingController();
 final ButtonStyle yesStyle = ElevatedButton.styleFrom(
-    textStyle: const TextStyle(fontSize: 20), primary: Colors.green);
+    textStyle: const TextStyle(fontSize: 20), backgroundColor: Colors.green);
 final ButtonStyle noStyle = ElevatedButton.styleFrom(
-    textStyle: const TextStyle(fontSize: 20), primary: Colors.red);
+    textStyle: const TextStyle(fontSize: 20), backgroundColor: Colors.red);
 String nameText = '';
 String needText = '';
 
 Future<void> _displayTextInputDialog(BuildContext context) async {
-  print("Loading Dialog");
   return showDialog(
       context: context,
       builder: (context) {

@@ -1,22 +1,15 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:homeless_tonight/message_class.dart';
-import 'package:homeless_tonight/pageTemplate.dart';
-import 'package:homeless_tonight/resources_screen.dart';
+import 'package:homeless_tonight/page_template.dart';
 import 'package:homeless_tonight/firebase_refs.dart';
-// ignore: depend_on_referenced_packages
 import 'package:geolocator/geolocator.dart';
-
-import 'messageui.dart';
 
 void getCurrentLocation() async {
   var position = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high);
-  var lastPosition = await Geolocator.getLastKnownPosition();
-  print(lastPosition);
+  // currently unused
+  // var lastPosition = await Geolocator.getLastKnownPosition();
   setState(() {
     locationMessage = "$position.latitude, $position.longitude";
   });
