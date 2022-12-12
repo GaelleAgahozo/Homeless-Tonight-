@@ -14,6 +14,7 @@ class _HomelessTonightPageState extends State<HomelessTonightPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70),
         child: AppBar(
