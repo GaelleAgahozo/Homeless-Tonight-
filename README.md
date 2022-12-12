@@ -12,7 +12,6 @@ The homeless users should be able to access the app as soon as they open it whil
 
 The app is designed for homeless people to connect them with service providers in order to get resources such as food, water, shelter, etc.
 
-##Screenshots
 <img width="324" alt="image" src="https://user-images.githubusercontent.com/72021075/207020224-559f9c5d-7bee-4f65-8adc-6a2d95486a22.png">
 
 <img width="328" alt="image" src="https://user-images.githubusercontent.com/72021075/207021456-370a6dfe-46e9-463a-aa9b-6f43174595f6.png">
