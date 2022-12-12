@@ -30,5 +30,8 @@ The app is designed for homeless people to connect them with service providers i
 
 <img width="321" alt="image" src="https://user-images.githubusercontent.com/72021075/207022840-0d194d78-5efc-4703-961d-79ad226848d6.png">
 
+<img width="329" alt="image" src="https://user-images.githubusercontent.com/72021075/207023473-66788243-80df-41bf-ae9e-f2adc938ecf1.png">
+
+<img width="330" alt="image" src="https://user-images.githubusercontent.com/72021075/207023572-c56dd161-bb04-4f17-bfc1-a163f0d46274.png">
 
 
