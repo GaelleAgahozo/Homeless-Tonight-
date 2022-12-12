@@ -275,7 +275,8 @@ class ResourceListItem extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             child: Text("Website: ${resource.website}"))
                       ]))),
-              onTap: () => launchUrl(Uri.parse(resource.website.toString())),
+              onTap: () => launchUrl(
+                  Uri.parse("https://${resource.website.toString()}")),
             )));
   }
 }
