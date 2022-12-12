@@ -1,7 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:homeless_tonight/firebase_refs.dart';
 import 'package:homeless_tonight/pageTemplate.dart';
 
+import 'message_class.dart';
 import 'messageui.dart';
+
+final FirebaseAuth auth = FirebaseAuth.instance;
 
 class DomesticViolenceScreen extends StatelessWidget {
   const DomesticViolenceScreen({super.key});
@@ -120,8 +125,7 @@ Future<void> _displayTextInputDialog(BuildContext context) async {
               style: yesStyle,
               child: const Text('OK'),
               onPressed: () {
-                _handleNewItem(nameText);
-                _handleNewItem(needText);
+                _handleNewItem(nameText, needText);
                 Navigator.pop(context);
                 // Navigator.push(context,
                 //     MaterialPageRoute(builder: (context) => ChatScreen()));
@@ -147,8 +151,19 @@ Future<void> _displayTextInputDialog(BuildContext context) async {
       });
 }
 
-void _handleNewItem(String itemText) {
-  print("Adding new item");
+void _handleNewItem(String nameText, String needText) {
   nameController.clear();
   needController.clear();
+
+  auth.signInAnonymously();
+
+  UnclaimedMessage newMessage = UnclaimedMessage(
+      userAddress: auth.currentUser!.uid,
+      userDisplayName: nameText,
+      location: '',
+      need: needText,
+      description: needText,
+      time: DateTime.now().millisecondsSinceEpoch.toString());
+
+  unclaimedMessageRef.doc().set(newMessage);
 }
