@@ -1,6 +1,5 @@
-//import 'dart:html';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:homeless_tonight/pageTemplate.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -15,7 +14,6 @@ class ResourcesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double appWidth = MediaQuery.of(context).size.width - 100;
-    double appHeight = MediaQuery.of(context).size.height - 100;
 
     return HomelessTonightPage(
       child: Column(children: <Widget>[
@@ -109,9 +107,6 @@ class ResourceListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double appWidth = MediaQuery.of(context).size.width;
-    double appHeight = MediaQuery.of(context).size.height;
-
     return HomelessTonightPage(
         child: Padding(
       padding: const EdgeInsets.all(20.0),
@@ -182,34 +177,106 @@ class ResourceListItem extends StatelessWidget {
   final TextStyle _textStyle = const TextStyle(
       color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold);
 
+  Future<void> _launchInBrowser(Uri url) async {
+    if (!await launchUrl(
+      url,
+      mode: LaunchMode.externalApplication,
+    )) {
+      throw 'Could not launch $url';
+    }
+  }
+
+  Future<void> _launchInWebViewOrVC(Uri url) async {
+    if (!await launchUrl(
+      url,
+      mode: LaunchMode.inAppWebView,
+      webViewConfiguration: const WebViewConfiguration(
+          headers: <String, String>{'my_header_key': 'my_header_value'}),
+    )) {
+      throw 'Could not launch $url';
+    }
+  }
+
+  Future<void> _launchInWebViewWithoutJavaScript(Uri url) async {
+    if (!await launchUrl(
+      url,
+      mode: LaunchMode.inAppWebView,
+      webViewConfiguration: const WebViewConfiguration(enableJavaScript: false),
+    )) {
+      throw 'Could not launch $url';
+    }
+  }
+
+  Future<void> _launchInWebViewWithoutDomStorage(Uri url) async {
+    if (!await launchUrl(
+      url,
+      mode: LaunchMode.inAppWebView,
+      webViewConfiguration: const WebViewConfiguration(enableDomStorage: false),
+    )) {
+      throw 'Could not launch $url';
+    }
+  }
+
+  Future<void> _launchUniversalLinkIos(Uri url) async {
+    final bool nativeAppLaunchSucceeded = await launchUrl(
+      url,
+      mode: LaunchMode.externalNonBrowserApplication,
+    );
+    if (!nativeAppLaunchSucceeded) {
+      await launchUrl(
+        url,
+        mode: LaunchMode.inAppWebView,
+      );
+    }
+  }
+
+  Widget _launchStatus(BuildContext context, AsyncSnapshot<void> snapshot) {
+    if (snapshot.hasError) {
+      return Text('Error: ${snapshot.error}');
+    } else {
+      return const Text('');
+    }
+  }
+
+  Future<void> _goTo(String link) async {
+    final Uri launchUri = Uri(
+      path: link,
+    );
+    await launchUrl(launchUri);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
         child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: ListTile(
-                title: Text(resource.name,
-                    textAlign: TextAlign.center, style: _textStyle),
-                subtitle: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(mainAxisSize: MainAxisSize.min, children: [
-                      Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(resource.longDescription,
-                              textAlign: TextAlign.center)),
-                      Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text("Address: ${resource.address}")),
-                      Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text("Phone Number: ${resource.phoneNumber}")),
-                      Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text("Hours: ${resource.hours}")),
-                      Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text("Website: ${resource.website}"))
-                    ])))));
+            child: InkWell(
+              child: ListTile(
+                  title: Text(resource.name,
+                      textAlign: TextAlign.center, style: _textStyle),
+                  subtitle: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(mainAxisSize: MainAxisSize.min, children: [
+                        Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(resource.longDescription,
+                                textAlign: TextAlign.center)),
+                        Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("Address: ${resource.address}")),
+                        Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child:
+                                Text("Phone Number: ${resource.phoneNumber}")),
+                        Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("Hours: ${resource.hours}")),
+                        Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("Website: ${resource.website}"))
+                      ]))),
+              onTap: () => launchUrl(Uri.parse(resource.website.toString())),
+            )));
   }
 }
 
