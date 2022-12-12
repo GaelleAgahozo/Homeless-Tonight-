@@ -66,7 +66,7 @@ class ListProviders extends StatelessWidget {
 
                     convoRef[1]
                         .doc(
-                            "$data.docs[index].data().userAddress-$auth.currentUser!.uid")
+                            "${data.docs[index].data().userAddress}-${auth.currentUser!.uid}")
                         .set(Message(
                             serviceIsSender: false,
                             serviceAddress: auth.currentUser!.uid,
