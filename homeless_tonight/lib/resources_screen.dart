@@ -14,6 +14,9 @@ class ResourcesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double appWidth = MediaQuery.of(context).size.width - 100;
+    double appHeight = MediaQuery.of(context).size.height - 100;
+
     return HomelessTonightPage(
       child: Column(children: <Widget>[
         const Spacer(),
@@ -26,7 +29,7 @@ class ResourcesScreen extends StatelessWidget {
                           title: 'Shelter', databaseRef: shelterRef))));
             }),
             child: SizedBox(
-              width: MediaQuery.of(context).size.width - 100,
+              width: appWidth,
               height: 100,
               child: const Center(
                 child: Text('Shelter',
@@ -43,7 +46,7 @@ class ResourcesScreen extends StatelessWidget {
                           title: 'Food', databaseRef: foodRef))));
             }),
             child: SizedBox(
-              width: MediaQuery.of(context).size.width - 100,
+              width: appWidth,
               height: 100,
               child: const Center(
                   child: Text('Food',
@@ -60,7 +63,7 @@ class ResourcesScreen extends StatelessWidget {
                           databaseRef: emergencySuppliesRef))));
             }),
             child: SizedBox(
-              width: MediaQuery.of(context).size.width - 100,
+              width: appWidth,
               height: 100,
               child: const Center(
                   child: Text('Emergency Supplies',
@@ -76,7 +79,7 @@ class ResourcesScreen extends StatelessWidget {
                           title: 'Laundry', databaseRef: laundryRef))));
             }),
             child: SizedBox(
-              width: MediaQuery.of(context).size.width - 100,
+              width: appWidth,
               height: 100,
               child: const Center(
                   child: Text('Laundry',
@@ -106,60 +109,68 @@ class ResourceListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double appWidth = MediaQuery.of(context).size.width;
+    double appHeight = MediaQuery.of(context).size.height;
+
     return HomelessTonightPage(
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child:
-            Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-          Card(
-            color: Theme.of(context).colorScheme.surface,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    title,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.onSurface,
-                        fontSize: 36),
+        child: Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Scrollable(
+        viewportBuilder: (context, position) => Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Card(
+                color: Theme.of(context).colorScheme.surface,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        title,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.onSurface,
+                            fontSize: 36),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
-          ),
-          const SizedBox(height: 20),
-          Expanded(
-            child: StreamBuilder<QuerySnapshot<Resource>>(
-              stream:
-                  databaseRef.orderBy('title', descending: false).snapshots(),
-              builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  return Center(
-                    child: Text(snapshot.error.toString()),
-                  );
-                }
+              const SizedBox(height: 20),
+              Expanded(
+                child: StreamBuilder<QuerySnapshot<Resource>>(
+                  stream: databaseRef
+                      .orderBy('title', descending: false)
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasError) {
+                      return Center(
+                        child: Text(snapshot.error.toString()),
+                      );
+                    }
 
-                if (!snapshot.hasData) {
-                  return const Center(child: CircularProgressIndicator());
-                }
+                    if (!snapshot.hasData) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
 
-                final data = snapshot.requireData;
+                    final data = snapshot.requireData;
 
-                return ListView.builder(
-                  itemCount: data.size,
-                  itemBuilder: (context, index) {
-                    return ResourceListItem(
-                      resource: data.docs[index].data(),
+                    return ListView.builder(
+                      itemCount: data.size,
+                      scrollDirection: Axis.vertical,
+                      itemBuilder: (context, index) {
+                        return ResourceListItem(
+                          resource: data.docs[index].data(),
+                        );
+                      },
                     );
                   },
-                );
-              },
-            ),
-          )
-        ]),
+                ),
+              )
+            ]),
       ),
-    );
+    ));
   }
 }
 
@@ -173,48 +184,34 @@ class ResourceListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(shrinkWrap: true, children: [
-      Card(
-          child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                  title: Text(resource.name,
-                      textAlign: TextAlign.center, style: _textStyle),
-                  subtitle: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(mainAxisSize: MainAxisSize.min, children: [
-                        Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(resource.longDescription,
-                                textAlign: TextAlign.center)),
-                        Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text("Address: ${resource.address}")),
-                        Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child:
-                                Text("Phone Number: ${resource.phoneNumber}")),
-                        Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text("Hours: ${resource.hours}")),
-                        Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text("Website: ${resource.website}"))
-                      ])))))
-    ]);
+    return Card(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListTile(
+                title: Text(resource.name,
+                    textAlign: TextAlign.center, style: _textStyle),
+                subtitle: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(mainAxisSize: MainAxisSize.min, children: [
+                      Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(resource.longDescription,
+                              textAlign: TextAlign.center)),
+                      Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text("Address: ${resource.address}")),
+                      Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text("Phone Number: ${resource.phoneNumber}")),
+                      Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text("Hours: ${resource.hours}")),
+                      Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text("Website: ${resource.website}"))
+                    ])))));
   }
 }
-
-// class NewResourcesList extends StatelessWidget {
-//   const NewResourcesList({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListView(children: const <Widget>[
-//       ExpansionTile(title: Text("Shelter Service 1")),
-//     ]);
-//   }
-// }
 
 @immutable
 class Resource {
