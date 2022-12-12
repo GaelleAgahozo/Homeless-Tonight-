@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:homeless_tonight/firebase_refs.dart';
 import 'package:homeless_tonight/pageTemplate.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'message_class.dart';
 import 'messageui.dart';
@@ -44,22 +46,43 @@ class DomesticViolenceScreen extends StatelessWidget {
               textAlign: TextAlign.center,
             )),
         Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 10),
+            padding: const EdgeInsets.only(top: 3),
             child: SizedBox(
-              width: 200,
-              height: 60,
-              child: Card(
-                  color: Theme.of(context).colorScheme.surface,
+              width: 300,
+              height: 100,
+              child: ElevatedButton(
+                  onPressed: () async {
+                    //indirect phone call
+                    // ignore: deprecated_member_use
+                    launch('tel:911');
+
+                    // await FlutterPhoneDirectCaller.callNumber(911);
+                    // launch('tel:911');
+                    // _displayTextInputDialog(context);
+                  },
                   child: const Text(
                     "Call 911",
-                    style: TextStyle(
-                        fontSize: 25,
-                        height: 1.8,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                    style: TextStyle(fontSize: 20, color: Colors.white),
                     textAlign: TextAlign.center,
                   )),
             )),
+        // Padding(
+        //     padding: const EdgeInsets.only(top: 10, bottom: 10),
+        //     child: SizedBox(
+        //       width: 200,
+        //       height: 60,
+        //       child: Card(
+        //           color: Theme.of(context).colorScheme.surface,
+        //           child: const Text(
+        //             "Call 911",
+        //             style: TextStyle(
+        //                 fontSize: 25,
+        //                 height: 1.8,
+        //                 fontWeight: FontWeight.bold,
+        //                 color: Colors.white),
+        //             textAlign: TextAlign.center,
+        //           )),
+        //     )),
         const Padding(
             padding: EdgeInsets.only(top: 5, bottom: 5),
             child: Text(

@@ -658,6 +658,8 @@ PODS:
     - leveldb-library (~> 1.22)
     - nanopb (< 2.30910.0, >= 2.30908.0)
   - Flutter (1.0.0)
+  - flutter_phone_direct_caller (0.0.1):
+    - Flutter
   - GoogleUtilities/AppDelegateSwizzler (7.10.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -752,6 +754,7 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_dynamic_links (from `.symlinks/plugins/firebase_dynamic_links/ios`)
   - Flutter (from `Flutter`)
+  - flutter_phone_direct_caller (from `.symlinks/plugins/flutter_phone_direct_caller/ios`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - sensors_plus (from `.symlinks/plugins/sensors_plus/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
@@ -788,6 +791,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_dynamic_links/ios"
   Flutter:
     :path: Flutter
+  flutter_phone_direct_caller:
+    :path: ".symlinks/plugins/flutter_phone_direct_caller/ios"
   permission_handler_apple:
     :path: ".symlinks/plugins/permission_handler_apple/ios"
   sensors_plus:
@@ -810,6 +815,7 @@ SPEC CHECKSUMS:
   FirebaseDynamicLinks: f832045bdb98db10ecaca9ab7e258f1602395d7c
   FirebaseFirestore: bda7a1ca8c19319a2acd2761cd4b962022c1d5ea
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  flutter_phone_direct_caller: bd2ffd297f371a8a6c7bfbba0196964ffe3c4358
   GoogleUtilities: bad72cb363809015b1f7f19beb1f1cd23c589f95
   "gRPC-C++": 9675f953ace2b3de7c506039d77be1f2e77a8db2
   gRPC-Core: 943e491cb0d45598b0b0eb9e910c88080369290b
