@@ -7,10 +7,25 @@ import 'package:homeless_tonight/message_class.dart';
 import 'package:homeless_tonight/pageTemplate.dart';
 import 'package:homeless_tonight/resources_screen.dart';
 import 'package:homeless_tonight/firebase_refs.dart';
+// ignore: depend_on_referenced_packages
+import 'package:geolocator/geolocator.dart';
 
 import 'messageui.dart';
 
+void getCurrentLocation() async {
+  var position = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high);
+  var lastPosition = await Geolocator.getLastKnownPosition();
+  print(lastPosition);
+  setState(() {
+    locationMessage = "$position.latitude, $position.longitude";
+  });
+}
+
+void setState(Null Function() param0) {}
+
 final FirebaseAuth auth = FirebaseAuth.instance;
+var locationMessage = "";
 
 class Shelter extends StatelessWidget {
   const Shelter({super.key});
@@ -84,6 +99,30 @@ Future<void> _displayTextInputDialog(BuildContext context) async {
               decoration: const InputDecoration(
                   hintText: "Enter Your General Location"),
             ),
+            const Icon(
+              Icons.location_on,
+              size: 24.0,
+              color: Colors.teal,
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            // const Text(
+            //   "Get User Location",
+            //   style: TextStyle(fontSize: 26.0, fontWeight: FontWeight.bold),
+            // ),
+            const SizedBox(
+              height: 20.0,
+            ),
+            Text(locationMessage),
+            ElevatedButton(
+                onPressed: () {
+                  getCurrentLocation();
+                },
+                child: const Text(
+                  'Get Current Location',
+                  style: TextStyle(color: Colors.white),
+                )),
             TextField(
               onChanged: (value) {
                 shelterText = value;
