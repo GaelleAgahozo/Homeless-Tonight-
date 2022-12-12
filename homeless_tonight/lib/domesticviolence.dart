@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:homeless_tonight/firebase_refs.dart';
-import 'package:homeless_tonight/pageTemplate.dart';
+import 'package:homeless_tonight/page_template.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'message_class.dart';
