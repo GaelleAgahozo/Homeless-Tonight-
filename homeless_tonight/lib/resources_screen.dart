@@ -1,6 +1,5 @@
-//import 'dart:html';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:homeless_tonight/pageTemplate.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -14,6 +13,8 @@ class ResourcesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double appWidth = MediaQuery.of(context).size.width - 100;
+
     return HomelessTonightPage(
       child: Column(children: <Widget>[
         const Spacer(),
@@ -26,7 +27,7 @@ class ResourcesScreen extends StatelessWidget {
                           title: 'Shelter', databaseRef: shelterRef))));
             }),
             child: SizedBox(
-              width: MediaQuery.of(context).size.width - 100,
+              width: appWidth,
               height: 100,
               child: const Center(
                 child: Text('Shelter',
@@ -43,7 +44,7 @@ class ResourcesScreen extends StatelessWidget {
                           title: 'Food', databaseRef: foodRef))));
             }),
             child: SizedBox(
-              width: MediaQuery.of(context).size.width - 100,
+              width: appWidth,
               height: 100,
               child: const Center(
                   child: Text('Food',
@@ -60,7 +61,7 @@ class ResourcesScreen extends StatelessWidget {
                           databaseRef: emergencySuppliesRef))));
             }),
             child: SizedBox(
-              width: MediaQuery.of(context).size.width - 100,
+              width: appWidth,
               height: 100,
               child: const Center(
                   child: Text('Emergency Supplies',
@@ -76,7 +77,7 @@ class ResourcesScreen extends StatelessWidget {
                           title: 'Laundry', databaseRef: laundryRef))));
             }),
             child: SizedBox(
-              width: MediaQuery.of(context).size.width - 100,
+              width: appWidth,
               height: 100,
               child: const Center(
                   child: Text('Laundry',
@@ -107,59 +108,64 @@ class ResourceListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return HomelessTonightPage(
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child:
-            Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-          Card(
-            color: Theme.of(context).colorScheme.surface,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    title,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.onSurface,
-                        fontSize: 36),
+        child: Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Scrollable(
+        viewportBuilder: (context, position) => Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Card(
+                color: Theme.of(context).colorScheme.surface,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        title,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.onSurface,
+                            fontSize: 36),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
-          ),
-          const SizedBox(height: 20),
-          Expanded(
-            child: StreamBuilder<QuerySnapshot<Resource>>(
-              stream:
-                  databaseRef.orderBy('title', descending: false).snapshots(),
-              builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  return Center(
-                    child: Text(snapshot.error.toString()),
-                  );
-                }
+              const SizedBox(height: 20),
+              Expanded(
+                child: StreamBuilder<QuerySnapshot<Resource>>(
+                  stream: databaseRef
+                      .orderBy('title', descending: false)
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasError) {
+                      return Center(
+                        child: Text(snapshot.error.toString()),
+                      );
+                    }
 
-                if (!snapshot.hasData) {
-                  return const Center(child: CircularProgressIndicator());
-                }
+                    if (!snapshot.hasData) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
 
-                final data = snapshot.requireData;
+                    final data = snapshot.requireData;
 
-                return ListView.builder(
-                  itemCount: data.size,
-                  itemBuilder: (context, index) {
-                    return ResourceListItem(
-                      resource: data.docs[index].data(),
+                    return ListView.builder(
+                      itemCount: data.size,
+                      scrollDirection: Axis.vertical,
+                      itemBuilder: (context, index) {
+                        return ResourceListItem(
+                          resource: data.docs[index].data(),
+                        );
+                      },
                     );
                   },
-                );
-              },
-            ),
-          )
-        ]),
+                ),
+              )
+            ]),
       ),
-    );
+    ));
   }
 }
 
@@ -171,12 +177,80 @@ class ResourceListItem extends StatelessWidget {
   final TextStyle _textStyle = const TextStyle(
       color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold);
 
+  Future<void> _launchInBrowser(Uri url) async {
+    if (!await launchUrl(
+      url,
+      mode: LaunchMode.externalApplication,
+    )) {
+      throw 'Could not launch $url';
+    }
+  }
+
+  Future<void> _launchInWebViewOrVC(Uri url) async {
+    if (!await launchUrl(
+      url,
+      mode: LaunchMode.inAppWebView,
+      webViewConfiguration: const WebViewConfiguration(
+          headers: <String, String>{'my_header_key': 'my_header_value'}),
+    )) {
+      throw 'Could not launch $url';
+    }
+  }
+
+  Future<void> _launchInWebViewWithoutJavaScript(Uri url) async {
+    if (!await launchUrl(
+      url,
+      mode: LaunchMode.inAppWebView,
+      webViewConfiguration: const WebViewConfiguration(enableJavaScript: false),
+    )) {
+      throw 'Could not launch $url';
+    }
+  }
+
+  Future<void> _launchInWebViewWithoutDomStorage(Uri url) async {
+    if (!await launchUrl(
+      url,
+      mode: LaunchMode.inAppWebView,
+      webViewConfiguration: const WebViewConfiguration(enableDomStorage: false),
+    )) {
+      throw 'Could not launch $url';
+    }
+  }
+
+  Future<void> _launchUniversalLinkIos(Uri url) async {
+    final bool nativeAppLaunchSucceeded = await launchUrl(
+      url,
+      mode: LaunchMode.externalNonBrowserApplication,
+    );
+    if (!nativeAppLaunchSucceeded) {
+      await launchUrl(
+        url,
+        mode: LaunchMode.inAppWebView,
+      );
+    }
+  }
+
+  Widget _launchStatus(BuildContext context, AsyncSnapshot<void> snapshot) {
+    if (snapshot.hasError) {
+      return Text('Error: ${snapshot.error}');
+    } else {
+      return const Text('');
+    }
+  }
+
+  Future<void> _goTo(String link) async {
+    final Uri launchUri = Uri(
+      path: link,
+    );
+    await launchUrl(launchUri);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ListView(shrinkWrap: true, children: [
-      Card(
-          child: Padding(
-              padding: const EdgeInsets.all(8.0),
+    return Card(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: InkWell(
               child: ListTile(
                   title: Text(resource.name,
                       textAlign: TextAlign.center, style: _textStyle),
@@ -200,21 +274,12 @@ class ResourceListItem extends StatelessWidget {
                         Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text("Website: ${resource.website}"))
-                      ])))))
-    ]);
+                      ]))),
+              onTap: () => launchUrl(
+                  Uri.parse("https://${resource.website.toString()}")),
+            )));
   }
 }
-
-// class NewResourcesList extends StatelessWidget {
-//   const NewResourcesList({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListView(children: const <Widget>[
-//       ExpansionTile(title: Text("Shelter Service 1")),
-//     ]);
-//   }
-// }
 
 @immutable
 class Resource {
