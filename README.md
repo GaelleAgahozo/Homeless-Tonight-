@@ -15,4 +15,21 @@ The app is designed for homeless people to connect them with service providers i
 ##Screenshots
 <img width="324" alt="image" src="https://user-images.githubusercontent.com/72021075/207020224-559f9c5d-7bee-4f65-8adc-6a2d95486a22.png">
 
-![Home Screen](https://user-images.githubusercontent.com/72021075/207020224-559f9c5d-7bee-4f65-8adc-6a2d95486a22.png "Home Screen")
+<img width="328" alt="image" src="https://user-images.githubusercontent.com/72021075/207021456-370a6dfe-46e9-463a-aa9b-6f43174595f6.png">
+
+<img width="323" alt="image" src="https://user-images.githubusercontent.com/72021075/207021630-811de24e-8085-4ef4-83cc-43f2c5d35363.png">
+
+<img width="326" alt="image" src="https://user-images.githubusercontent.com/72021075/207021732-61c063de-c69a-426c-9c1f-933212274a17.png">
+
+<img width="326" alt="image" src="https://user-images.githubusercontent.com/72021075/207021913-49f7d8a4-b5dd-464b-8014-f1f8cc12d376.png">
+
+<img width="327" alt="image" src="https://user-images.githubusercontent.com/72021075/207022231-53d95262-290b-40ad-8f15-f6e0e8eed189.png">
+
+<img width="326" alt="image" src="https://user-images.githubusercontent.com/72021075/207022647-ab9d4a9c-ca64-4d85-8538-2566951d4510.png">
+
+<img width="327" alt="image" src="https://user-images.githubusercontent.com/72021075/207022751-99279744-5d70-40af-b655-28d1d9e62bd1.png">
+
+<img width="321" alt="image" src="https://user-images.githubusercontent.com/72021075/207022840-0d194d78-5efc-4703-961d-79ad226848d6.png">
+
+
+
