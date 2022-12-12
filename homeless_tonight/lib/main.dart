@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:homeless_tonight/homeless.dart';
-import 'package:sensors_plus/sensors_plus.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 import 'package:firebase_auth/firebase_auth.dart'
     hide EmailAuthProvider, PhoneAuthProvider;
@@ -63,7 +61,7 @@ class HomelessTonightApp extends StatelessWidget {
         }),
         '/profile': ((context) {
           return ProfileScreen(
-            providers: [],
+            providers: const [],
             actions: [
               SignedOutAction((context) {
                 Navigator.of(context)
@@ -146,7 +144,6 @@ class ApplicationState extends ChangeNotifier {
 
     FirebaseAuth.instance.userChanges().listen((user) {
       if (user != null) {
-        print(user.isAnonymous);
         if (user.isAnonymous) {
           _loggedIn = LoginStatus.loggedInAnon;
         } else {

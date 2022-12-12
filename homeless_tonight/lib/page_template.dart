@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:homeless_tonight/conversation_screen.dart';
 
 class HomelessTonightPage extends StatefulWidget {
-  HomelessTonightPage({super.key, required this.child});
+  const HomelessTonightPage({super.key, required this.child});
 
   final Widget child;
 
@@ -16,7 +16,7 @@ class _HomelessTonightPageState extends State<HomelessTonightPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70),
+        preferredSize: const Size.fromHeight(70),
         child: AppBar(
           iconTheme: const IconThemeData(color: Color(0xff73bfb8)),
           centerTitle: true,
@@ -25,19 +25,21 @@ class _HomelessTonightPageState extends State<HomelessTonightPage> {
           backgroundColor: Colors.white,
           actions: [
             IconButton(
-              icon: (false)
-                  ? // switches in the condition that there is a new message
-                  Stack(children: <Widget>[
-                      Icon(Icons.message),
-                      Positioned(
-                        // draw a red marble
-                        top: 0.0,
-                        right: 0.0,
-                        child: new Icon(Icons.brightness_1,
-                            size: 12.0, color: Colors.redAccent),
-                      )
-                    ])
-                  : const Icon(Icons.message),
+              icon:
+                  // keeping for potential implementation later
+                  // (false)
+                  //     ? // switches in the condition that there is a new message
+                  //     Stack(children: <Widget>[
+                  //         Icon(Icons.message),
+                  //         Positioned(
+                  //           // draw a red marble
+                  //           top: 0.0,
+                  //           right: 0.0,
+                  //           child: new Icon(Icons.brightness_1,
+                  //               size: 12.0, color: Colors.redAccent),
+                  //         )
+                  //       ]):
+                  const Icon(Icons.message),
               onPressed: () {
                 setState(() {
                   Navigator.push(

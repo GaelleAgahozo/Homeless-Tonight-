@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:homeless_tonight/pageTemplate.dart';
+import 'package:homeless_tonight/page_template.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ResourcesScreen extends StatelessWidget {
@@ -177,73 +176,74 @@ class ResourceListItem extends StatelessWidget {
   final TextStyle _textStyle = const TextStyle(
       color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold);
 
-  Future<void> _launchInBrowser(Uri url) async {
-    if (!await launchUrl(
-      url,
-      mode: LaunchMode.externalApplication,
-    )) {
-      throw 'Could not launch $url';
-    }
-  }
+  // currently unused
+  // Future<void> _launchInBrowser(Uri url) async {
+  //   if (!await launchUrl(
+  //     url,
+  //     mode: LaunchMode.externalApplication,
+  //   )) {
+  //     throw 'Could not launch $url';
+  //   }
+  // }
 
-  Future<void> _launchInWebViewOrVC(Uri url) async {
-    if (!await launchUrl(
-      url,
-      mode: LaunchMode.inAppWebView,
-      webViewConfiguration: const WebViewConfiguration(
-          headers: <String, String>{'my_header_key': 'my_header_value'}),
-    )) {
-      throw 'Could not launch $url';
-    }
-  }
+  // Future<void> _launchInWebViewOrVC(Uri url) async {
+  //   if (!await launchUrl(
+  //     url,
+  //     mode: LaunchMode.inAppWebView,
+  //     webViewConfiguration: const WebViewConfiguration(
+  //         headers: <String, String>{'my_header_key': 'my_header_value'}),
+  //   )) {
+  //     throw 'Could not launch $url';
+  //   }
+  // }
 
-  Future<void> _launchInWebViewWithoutJavaScript(Uri url) async {
-    if (!await launchUrl(
-      url,
-      mode: LaunchMode.inAppWebView,
-      webViewConfiguration: const WebViewConfiguration(enableJavaScript: false),
-    )) {
-      throw 'Could not launch $url';
-    }
-  }
+  // Future<void> _launchInWebViewWithoutJavaScript(Uri url) async {
+  //   if (!await launchUrl(
+  //     url,
+  //     mode: LaunchMode.inAppWebView,
+  //     webViewConfiguration: const WebViewConfiguration(enableJavaScript: false),
+  //   )) {
+  //     throw 'Could not launch $url';
+  //   }
+  // }
 
-  Future<void> _launchInWebViewWithoutDomStorage(Uri url) async {
-    if (!await launchUrl(
-      url,
-      mode: LaunchMode.inAppWebView,
-      webViewConfiguration: const WebViewConfiguration(enableDomStorage: false),
-    )) {
-      throw 'Could not launch $url';
-    }
-  }
+  // Future<void> _launchInWebViewWithoutDomStorage(Uri url) async {
+  //   if (!await launchUrl(
+  //     url,
+  //     mode: LaunchMode.inAppWebView,
+  //     webViewConfiguration: const WebViewConfiguration(enableDomStorage: false),
+  //   )) {
+  //     throw 'Could not launch $url';
+  //   }
+  // }
 
-  Future<void> _launchUniversalLinkIos(Uri url) async {
-    final bool nativeAppLaunchSucceeded = await launchUrl(
-      url,
-      mode: LaunchMode.externalNonBrowserApplication,
-    );
-    if (!nativeAppLaunchSucceeded) {
-      await launchUrl(
-        url,
-        mode: LaunchMode.inAppWebView,
-      );
-    }
-  }
+  // Future<void> _launchUniversalLinkIos(Uri url) async {
+  //   final bool nativeAppLaunchSucceeded = await launchUrl(
+  //     url,
+  //     mode: LaunchMode.externalNonBrowserApplication,
+  //   );
+  //   if (!nativeAppLaunchSucceeded) {
+  //     await launchUrl(
+  //       url,
+  //       mode: LaunchMode.inAppWebView,
+  //     );
+  //   }
+  // }
 
-  Widget _launchStatus(BuildContext context, AsyncSnapshot<void> snapshot) {
-    if (snapshot.hasError) {
-      return Text('Error: ${snapshot.error}');
-    } else {
-      return const Text('');
-    }
-  }
+  // Widget _launchStatus(BuildContext context, AsyncSnapshot<void> snapshot) {
+  //   if (snapshot.hasError) {
+  //     return Text('Error: ${snapshot.error}');
+  //   } else {
+  //     return const Text('');
+  //   }
+  // }
 
-  Future<void> _goTo(String link) async {
-    final Uri launchUri = Uri(
-      path: link,
-    );
-    await launchUrl(launchUri);
-  }
+  // Future<void> _goTo(String link) async {
+  //   final Uri launchUri = Uri(
+  //     path: link,
+  //   );
+  //   await launchUrl(launchUri);
+  // }
 
   @override
   Widget build(BuildContext context) {
